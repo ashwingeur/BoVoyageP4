@@ -10,7 +10,7 @@ namespace BoVoyageP4.Models
     public class Client : Personne
     {
         [Required]
-        //[Index(IsUnique = true)]
+        [Index(IsUnique = true)]
         [StringLength(40, MinimumLength = 1, ErrorMessage = "Le nom du client doit contenir entre 1 et 40 caractères")]
         public string Email { get; set; }
 

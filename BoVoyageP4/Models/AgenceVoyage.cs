@@ -13,7 +13,7 @@ namespace BoVoyageP4.Models
         public int ID { get; set; }
 
         [Required]
-        //[Index(IsUnique = true)]
+        [Index(IsUnique = true)]
         [StringLength(40, MinimumLength = 1, ErrorMessage = "Le nom de l'agence doit contenir entre 1 et 40 caractères")]
         public string Nom { get; set; }
 
