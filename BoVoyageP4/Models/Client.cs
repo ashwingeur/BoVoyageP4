@@ -27,6 +27,6 @@ namespace BoVoyageP4.Models
             DateNaissance = dateNaissance;
         }
 
-        public List<DossierReservation> DossiersReservation { get; set; }
+        public List<DossierReservation> DossierReservation { get; set; }
     }
 }
