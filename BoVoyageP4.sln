@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoVoyageP4", "BoVoyageP4\BoVoyageP4.csproj", "{C33BB913-DE57-454D-8872-6E4FBF65954E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoVoyageP4.Tests", "BoVoyageP4.Tests\BoVoyageP4.Tests.csproj", "{264E59C1-8C81-461C-9F92-A1981FED6BC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C33BB913-DE57-454D-8872-6E4FBF65954E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33BB913-DE57-454D-8872-6E4FBF65954E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33BB913-DE57-454D-8872-6E4FBF65954E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33BB913-DE57-454D-8872-6E4FBF65954E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264E59C1-8C81-461C-9F92-A1981FED6BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264E59C1-8C81-461C-9F92-A1981FED6BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264E59C1-8C81-461C-9F92-A1981FED6BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264E59C1-8C81-461C-9F92-A1981FED6BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8943B5DA-ABBA-410F-BD9B-5B25B685930C}
+	EndGlobalSection
+EndGlobal
