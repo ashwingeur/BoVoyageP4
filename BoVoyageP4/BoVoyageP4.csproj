@@ -278,6 +278,7 @@
     <Content Include="Areas\BackOffice\Views\VoyageImages\Details.cshtml" />
     <Content Include="Areas\BackOffice\Views\VoyageImages\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\VoyageImages\Index.cshtml" />
+    <Content Include="connectionStrings.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
