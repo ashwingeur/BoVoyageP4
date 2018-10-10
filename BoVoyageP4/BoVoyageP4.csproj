@@ -156,6 +156,7 @@
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
     <Compile Include="Areas\BackOffice\Controllers\AgenceVoyagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\AssurancesController.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\AuthentificationController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\ClientsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\CommercialsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DestinationsController.cs" />
