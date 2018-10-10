@@ -166,7 +166,6 @@
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
     <Compile Include="Filters\AuthentificationClientAttribut.cs" />
     <Compile Include="Filters\AuthentificationCommercialAttribut.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Migrations\201810101221057_Second.cs" />
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>

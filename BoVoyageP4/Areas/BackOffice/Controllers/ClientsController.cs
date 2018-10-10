@@ -1,5 +1,6 @@
 ﻿using BoVoyageP4.Controllers;
 using BoVoyageP4.Models;
+using BoVoyageP4.Outils;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -61,13 +62,21 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(Name = "~Views/Clients/Subscribe")]
-        public ActionResult Subscribe([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Subscribe([Bind(Include = "Email,MotDePasse,MotDePasseVerification,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
         {
             if (ModelState.IsValid)
             {
+                client.MotDePasse = client.MotDePasse.HashMD5();
+                client.MotDePasseVerification = client.MotDePasseVerification.HashMD5();
+
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.Clients.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                db.Configuration.ValidateOnSaveEnabled = true;
+                Display("Clients enregistré");
+
+                return RedirectToAction("index", "home");
             }
 
             return View(client);
