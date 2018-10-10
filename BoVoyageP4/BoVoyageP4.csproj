@@ -161,6 +161,7 @@
     <Compile Include="Areas\BackOffice\Controllers\DestinationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DossierReservationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
+    <Compile Include="Models\AuthentificationLoginViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\BoVoyageDbContext.cs" />
@@ -231,6 +232,9 @@
     <Content Include="Areas\BackOffice\Views\DossierReservations\Details.cshtml" />
     <Content Include="Areas\BackOffice\Views\DossierReservations\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\DossierReservations\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Authentification.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Authentification\Login.cshtml" />
+    <Content Include="connectionStrings.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -260,7 +264,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
-    <Folder Include="Areas\BackOffice\Views\Authentification\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
