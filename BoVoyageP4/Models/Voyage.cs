@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace BoVoyageP4.Models
 {
@@ -33,6 +31,9 @@ namespace BoVoyageP4.Models
         [ForeignKey("IDAgenceVoyage")]
         public AgenceVoyage AgenceVoyage { get; set; }
 
+        [Display(Name = "Images")]
+        public ICollection<VoyageImage> Images { get; set; }
+
         //Implementation du constructeur par defaut nécéssaire à Entity
         public Voyage() { }
 
@@ -60,7 +61,6 @@ namespace BoVoyageP4.Models
 
         public void Reserver(int places)
         {
-
         }
 
         public override string ToString()
