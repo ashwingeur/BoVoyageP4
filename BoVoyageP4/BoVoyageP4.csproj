@@ -170,6 +170,18 @@
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810101448062_addImagesVoyages.cs" />
+    <Compile Include="Migrations\201810101448062_addImagesVoyages.Designer.cs">
+      <DependentUpon>201810101448062_addImagesVoyages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101448300_addImagesVoyages1.cs" />
+    <Compile Include="Migrations\201810101448300_addImagesVoyages1.Designer.cs">
+      <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101503481_ChangementCivilite.cs" />
+    <Compile Include="Migrations\201810101503481_ChangementCivilite.Designer.cs">
+      <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuthentificationViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -270,6 +282,7 @@
     <Content Include="Areas\BackOffice\Views\VoyageImages\Details.cshtml" />
     <Content Include="Areas\BackOffice\Views\VoyageImages\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\VoyageImages\Index.cshtml" />
+    <Content Include="connectionStrings.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -302,12 +315,12 @@
       <DependentUpon>ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
+    <Content Include="Views\Clients\Login.cshtml" />
     <Content Include="Views\Home\DetailVoyage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
-    <Folder Include="Views\AuthentificationLoginViewModel\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +342,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101221057_Second.resx">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101448062_addImagesVoyages.resx">
+      <DependentUpon>201810101448062_addImagesVoyages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101448300_addImagesVoyages1.resx">
+      <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101503481_ChangementCivilite.resx">
+      <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
