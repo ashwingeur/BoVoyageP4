@@ -5,6 +5,9 @@ namespace BoVoyageP4.Models
 {
     public class VoyageImage
     {
+
+        public int ID { get; set; }
+
         [Required]
         [StringLength(150)]
         [Display(Name = "Nom")]
