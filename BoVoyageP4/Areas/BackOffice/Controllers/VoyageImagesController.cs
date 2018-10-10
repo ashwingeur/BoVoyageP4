@@ -18,7 +18,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // GET: BackOffice/VoyageImages
         public ActionResult Index()
         {
-            var voyageImage = db.VoyageImage.Include(v => v.Voyage);
+            var voyageImage = db.VoyageImages.Include(v => v.Voyage);
             return View(voyageImage.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            VoyageImage voyageImage = db.VoyageImages.Find(id);
             if (voyageImage == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.VoyageImage.Add(voyageImage);
+                db.VoyageImages.Add(voyageImage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -69,7 +69,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            VoyageImage voyageImage = db.VoyageImages.Find(id);
             if (voyageImage == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            VoyageImage voyageImage = db.VoyageImages.Find(id);
             if (voyageImage == null)
             {
                 return HttpNotFound();
@@ -115,12 +115,19 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VoyageImage voyageImage = db.VoyageImage.Find(id);
-            db.VoyageImage.Remove(voyageImage);
+            VoyageImage voyageImage = db.VoyageImages.Find(id);
+            db.VoyageImages.Remove(voyageImage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
