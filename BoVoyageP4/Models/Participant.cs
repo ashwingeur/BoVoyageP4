@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BoVoyageP4.Enumeration;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BoVoyageP4.Models
@@ -25,12 +23,11 @@ namespace BoVoyageP4.Models
         [ForeignKey("IDDossierReservation")]
         public DossierReservation DossierReservation { get; set; }
 
-
         public Participant()
         {
         }
 
-        public Participant(string civ, string nom, string prenom, string adresse, string tel, DateTime dateNaissance)
+        public Participant(Civilite civ, string nom, string prenom, string adresse, string tel, DateTime dateNaissance)
         {
             Nom = nom;
             Prenom = prenom;

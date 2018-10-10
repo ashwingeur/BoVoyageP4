@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoVoyageP4.Enumeration;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,8 +10,7 @@ namespace BoVoyageP4.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(4, MinimumLength = 1, ErrorMessage = "La civilité doit contenir entre 1 et 4 caractères")]
-        public string Civilite { get; set; }
+        public Civilite Civilite { get; set; }
 
         [Required]
         [StringLength(40, MinimumLength = 1, ErrorMessage = "Le nom doit contenir entre 1 et 40 caractères")]
