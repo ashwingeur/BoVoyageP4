@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,6 +29,7 @@ namespace BoVoyageP4.Models
         public string Telephone { get; set; }
 
         [Required]
+        [Display(Name = "Date de Naissance")]
         public DateTime DateNaissance { get; set; }
 
         [NotMapped]

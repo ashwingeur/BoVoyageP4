@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /BoVoyageP4/connectionStrings.config
+*.pyc
+/BoVoyageP4/ConnectionStrings.config
