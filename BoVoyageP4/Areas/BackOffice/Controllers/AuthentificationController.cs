@@ -24,8 +24,8 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             if (ModelState.IsValid)
             {
                 var hash = model.Password.HashMD5();
-                var admin = db.Clients.SingleOrDefault(
-                    x => x.Email == model.Login && x.MotDePasse == hash);
+                var admin = db.Commercials.SingleOrDefault(
+                    x => x.Login == model.Login && x.MotDePasse == hash);
 
                 if (admin == null)
                 {
