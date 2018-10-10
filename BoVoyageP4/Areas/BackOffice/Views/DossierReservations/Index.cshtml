@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BoVoyageP4.Models.DossierReservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voyage.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroCarteBancaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixParPersonne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EtatDossierReservation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaisonAnnulationDossier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voyage.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroCarteBancaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixParPersonne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EtatDossierReservation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaisonAnnulationDossier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixTotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
