@@ -1,9 +1,5 @@
 ﻿using BoVoyageP4.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace BoVoyageP4.Data
 {
@@ -17,6 +13,8 @@ namespace BoVoyageP4.Data
 
         public DbSet<Destination> Destinations { get; set; }
 
+        public DbSet<Commercial> Commercials { get; set; }
+
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<Assurance> Assurances { get; set; }
@@ -28,9 +26,5 @@ namespace BoVoyageP4.Data
         public DbSet<Voyage> Voyages { get; set; }
 
         public DbSet<VoyageImage> VoyageImage { get; set; }
-
     }
-
-
-
 }

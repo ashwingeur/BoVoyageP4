@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BoVoyageP4.Models
 {
-    public class Commerciaux : Personne
+    public class Commercial : Personne
     {
         [Required]
         [StringLength(20)]
