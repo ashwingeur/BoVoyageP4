@@ -164,6 +164,10 @@
     <Compile Include="Areas\BackOffice\Controllers\ParticipantsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
+    <Compile Include="Migrations\201810101221057_Second.cs" />
+    <Compile Include="Migrations\201810101221057_Second.Designer.cs">
+      <DependentUpon>201810101221057_Second.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuthentificationLoginViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -318,6 +322,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810101106592_Init.resx">
       <DependentUpon>201810101106592_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101221057_Second.resx">
+      <DependentUpon>201810101221057_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
