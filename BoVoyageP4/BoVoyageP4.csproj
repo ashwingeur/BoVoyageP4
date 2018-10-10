@@ -158,6 +158,7 @@
     <Compile Include="Areas\BackOffice\Controllers\ClientsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DestinationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\BoVoyageDbContext.cs" />
     <Compile Include="Enumeration\Enumeration.cs" />
@@ -176,6 +177,8 @@
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\Voyage.cs" />
     <Compile Include="Models\VoyageImage.cs" />
+    <Compile Include="Outils\Extension.cs" />
+    <Compile Include="Outils\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +247,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
