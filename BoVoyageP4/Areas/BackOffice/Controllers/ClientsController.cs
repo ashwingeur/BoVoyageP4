@@ -53,6 +53,26 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
+        public ActionResult Subscribe()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route(Name = "~Views/Clients/Subscribe")]
+        public ActionResult Subscribe([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Clients.Add(client);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(client);
+        }
+
         // GET: BackOffice/Clients/Edit/5
         public ActionResult Edit(int? id)
         {
