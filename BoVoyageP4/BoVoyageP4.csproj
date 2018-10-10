@@ -302,6 +302,7 @@
       <DependentUpon>ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
+    <Content Include="Views\Home\DetailVoyage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
