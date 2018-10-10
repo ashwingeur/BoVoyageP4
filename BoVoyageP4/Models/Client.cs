@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoVoyageP4.Validateurs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,7 @@ namespace BoVoyageP4.Models
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
             , ErrorMessage = "Le format n'est pas bon.")]
         [Index(IsUnique = true)]
+        [Email]
         public string Email { get; set; }
 
         [Display(Name = "Mot de passe")]
