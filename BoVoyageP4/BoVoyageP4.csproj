@@ -170,6 +170,14 @@
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810101448062_addImagesVoyages.cs" />
+    <Compile Include="Migrations\201810101448062_addImagesVoyages.Designer.cs">
+      <DependentUpon>201810101448062_addImagesVoyages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101448300_addImagesVoyages1.cs" />
+    <Compile Include="Migrations\201810101448300_addImagesVoyages1.Designer.cs">
+      <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuthentificationViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -328,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101221057_Second.resx">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101448062_addImagesVoyages.resx">
+      <DependentUpon>201810101448062_addImagesVoyages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101448300_addImagesVoyages1.resx">
+      <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
