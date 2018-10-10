@@ -301,11 +301,11 @@
       <DependentUpon>ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
+    <Content Include="Views\Clients\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
-    <Folder Include="Views\AuthentificationLoginViewModel\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
