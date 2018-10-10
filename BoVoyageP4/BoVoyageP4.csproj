@@ -164,7 +164,6 @@
     <Compile Include="Areas\BackOffice\Controllers\ParticipantsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Migrations\201810101221057_Second.cs" />
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
@@ -248,7 +247,9 @@
     <Content Include="Areas\BackOffice\Views\DossierReservations\Index.cshtml" />
     <Content Include="Areas\BackOffice\Views\Authentification.cshtml" />
     <Content Include="Areas\BackOffice\Views\Authentification\Login.cshtml" />
-    <Content Include="connectionStrings.config" />
+    <Content Include="connectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\BackOffice\Views\Commercials\Create.cshtml" />
     <Content Include="Areas\BackOffice\Views\Commercials\Delete.cshtml" />
     <Content Include="Areas\BackOffice\Views\Commercials\Details.cshtml" />
@@ -294,18 +295,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="ConnectionStrings.config" />
     <Content Include="ConnectionStrings.Debug.config">
       <DependentUpon>ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="ConnectionStrings.Release.config">
       <DependentUpon>ConnectionStrings.config</DependentUpon>
     </Content>
-    <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
-    <Content Include="Views\Clients\Details.cshtml" />
-    <Content Include="Views\Clients\Edit.cshtml" />
-    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\Subscribe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
