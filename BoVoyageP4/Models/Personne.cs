@@ -33,6 +33,7 @@ namespace BoVoyageP4.Models
         public string Telephone { get; set; }
 
         [Required]
+        [Display(Name = "Date de Naissance")]
         public DateTime DateNaissance { get; set; }
 
         [NotMapped]
