@@ -165,6 +165,7 @@
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
     <Compile Include="Filters\AuthentificationAttribut.cs" />
+    <Compile Include="Helpers\BoVoyageHelpers.cs" />
     <Compile Include="Migrations\201810101221057_Second.cs" />
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
