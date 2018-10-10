@@ -13,14 +13,16 @@ namespace BoVoyageP4.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Agence de voyages ")]
         [Index(IsUnique = true)]
-        [StringLength(40, MinimumLength = 1, ErrorMessage = "Le nom de l'agence doit contenir entre 1 et 40 caractères")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Le nom de l'agence doit contenir entre 1 et 20 caractères")]
         public string Nom { get; set; }
 
 
         public List<Voyage> Voyages { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
+
         public AgenceVoyage() { }
 
         public AgenceVoyage(string nom)
