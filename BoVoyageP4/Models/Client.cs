@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,14 +7,33 @@ namespace BoVoyageP4.Models
 {
     public class Client : Personne
     {
-        [Required]
+        [StringLength(150, ErrorMessage = "Le champ {0} doit contenir {1} caractères max.")]
+        [Display(Name = "Adresse mail")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                           @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                           @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+            , ErrorMessage = "Le format n'est pas bon.")]
         [Index(IsUnique = true)]
-        [StringLength(40, MinimumLength = 1, ErrorMessage = "Le nom du client doit contenir entre 1 et 40 caractères")]
         public string Email { get; set; }
+
+        [Display(Name = "Mot de passe")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$",
+            ErrorMessage = "{0} incorrect.")]
+        [StringLength(150)]
+        public string MotDePasse { get; set; }
+
+        [Display(Name = "Confirmation du mot de passe")]
+        [DataType(DataType.Password)]
+        [Compare("MotDePasse", ErrorMessage = "La confirmation n'est pas bonne.")]
+        [NotMapped]
+        public string MotDePasseVerification { get; set; }
 
         public Client()
         {
         }
+
         public Client(string civilite, string nom, string prenom, string adresse, string telephone, DateTime dateNaissance)
         {
             Nom = nom;

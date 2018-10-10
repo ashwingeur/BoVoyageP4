@@ -1,10 +1,7 @@
-﻿using System;
+﻿using BoVoyageP4.Enumeration;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BoVoyageP4.Enumeration;
 
 namespace BoVoyageP4.Models
 {
@@ -62,19 +59,18 @@ namespace BoVoyageP4.Models
             EtatDossierReservation = Etat.EnAttente;
         }
 
-        void Annuler(RaisonAnnulationDossier raison)
+        private void Annuler(RaisonAnnulationDossier raison)
         {
             RaisonAnnulationDossier = raison;
             EtatDossierReservation = Etat.Refusee;
-
         }
 
-        void ValiderSolvabiliter()
+        private void ValiderSolvabiliter()
         {
             EtatDossierReservation = Etat.EnCours;
         }
 
-        void Accepter()
+        private void Accepter()
         {
             EtatDossierReservation = Etat.Acceptee;
         }
