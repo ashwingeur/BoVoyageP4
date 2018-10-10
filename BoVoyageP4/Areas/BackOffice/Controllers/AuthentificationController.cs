@@ -1,5 +1,6 @@
 ﻿using BoVoyageP4.Controllers;
 using BoVoyageP4.Models;
+using BoVoyageP4.Outils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,11 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 var hash = model.Password.HashMD5();
                 var admin = db.Clients.SingleOrDefault(
-                    x => x.Email == model.Mail && x.MotDePasse == hash);
+                    x => x.Email == model.Login && x.MotDePasse == hash);
 
                 if (admin == null)
                 {
-                    ModelState.AddModelError("Mail", "Login / mot de passe invalide");
+                    ModelState.AddModelError("Login", "Login / mot de passe invalide");
                     return View();
                 }
                 else
@@ -49,4 +50,4 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 
     }
 }
-}
+

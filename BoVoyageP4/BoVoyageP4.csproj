@@ -209,8 +209,8 @@
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\Voyage.cs" />
     <Compile Include="Models\VoyageImage.cs" />
-    <Compile Include="Outils\Extension.cs" />
     <Compile Include="Outils\Message.cs" />
+    <Compile Include="Outils\Password.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validateurs\EmailAttribute.cs" />
   </ItemGroup>
