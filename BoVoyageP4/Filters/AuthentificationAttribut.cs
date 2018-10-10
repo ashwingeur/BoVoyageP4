@@ -18,7 +18,7 @@ namespace BoVoyageP4.Filters
                 if (filterContext.HttpContext.Session["CLIENT"] == null)
                 {
                     filterContext.Controller.TempData["REDIRECT"] = filterContext.HttpContext.Request.Url.AbsoluteUri;
-                    filterContext.Result = new RedirectResult(@"\authentification\login");
+                    filterContext.Result = new RedirectResult(@"\authentificationclient\login");
                 }
             }
 
