@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BoVoyageP4.Data;
-using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class DossierReservationsController : Controller
+    public class DossierReservationsController : BaseController
     {
-        private BoVoyageDbContext db = new BoVoyageDbContext();
-
         // GET: BackOffice/DossierReservations
         public ActionResult Index()
         {
@@ -46,7 +40,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/DossierReservations/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -82,7 +76,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/DossierReservations/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -124,7 +118,5 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        
     }
 }

@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BoVoyageP4.Data;
-using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class VoyageImagesController : Controller
+    public class VoyageImagesController : BaseController
     {
-        private BoVoyageDbContext db = new BoVoyageDbContext();
-
         // GET: BackOffice/VoyageImages
         public ActionResult Index()
         {
@@ -45,7 +39,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/VoyageImages/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,7 +73,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/VoyageImages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
