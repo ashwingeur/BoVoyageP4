@@ -161,13 +161,14 @@
     <Compile Include="Areas\BackOffice\Controllers\DestinationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DossierReservationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\BoVoyageDbContext.cs" />
     <Compile Include="Enumeration\Enumeration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\About.cs" />
+    <Compile Include="Models\Info.cs" />
     <Compile Include="Models\AgenceVoyage.cs" />
     <Compile Include="Models\Assurance.cs" />
     <Compile Include="Models\Client.cs" />
@@ -179,6 +180,8 @@
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\Voyage.cs" />
     <Compile Include="Models\VoyageImage.cs" />
+    <Compile Include="Outils\Extension.cs" />
+    <Compile Include="Outils\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +261,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
     <Folder Include="Areas\BackOffice\Views\Authentification\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
