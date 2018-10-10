@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using BoVoyageP4.Models;
+using System;
+using System.Web.Mvc;
 
 namespace BoVoyageP4.Controllers
 {
@@ -6,14 +8,26 @@ namespace BoVoyageP4.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ViewData["Title"] = "Accueil";
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.Tournaments = db.Tournaments.Include("Weapons")
+                                              .Include("Pictures")
+                                              .Where(x => x.StartDate >= DateTime.Now)
+                                              .OrderBy(x => x.StartDate)
+                                              .Take(20);
+            return View(model);
         }
 
+        //[Route("a-propos")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var modelInfo = new Info
+            {
+                NomDeveloppeur = "TEAM LAS",
+                ContactMail = "contact@teamlas.com",
+                DateCreation = DateTime.Now
+            };
+            return View(modelInfo);
         }
 
         public ActionResult Contact()

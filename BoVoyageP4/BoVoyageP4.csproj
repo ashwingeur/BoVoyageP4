@@ -164,8 +164,7 @@
     <Compile Include="Areas\BackOffice\Controllers\ParticipantsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
-    <Compile Include="Filters\AuthentificationClientAttribut.cs" />
-    <Compile Include="Filters\AuthentificationCommercialAttribut.cs" />
+    <Compile Include="Filters\AuthentificationAttribut.cs" />
     <Compile Include="Migrations\201810101221057_Second.cs" />
     <Compile Include="Migrations\201810101221057_Second.Designer.cs">
       <DependentUpon>201810101221057_Second.cs</DependentUpon>
@@ -191,6 +190,7 @@
     <Compile Include="Models\Destination.cs" />
     <Compile Include="Models\DossierReservation.cs" />
     <Compile Include="Models\FormulaireContact.cs" />
+    <Compile Include="Models\ListeVoyageHome.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\Voyage.cs" />
