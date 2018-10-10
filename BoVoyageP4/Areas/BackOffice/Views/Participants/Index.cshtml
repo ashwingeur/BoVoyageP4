@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BoVoyageP4.Models.Client>
+﻿@model IEnumerable<BoVoyageP4.Models.Participant>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MotDePasse)
+            @Html.DisplayNameFor(model => model.DossierReservation.NumeroCarteBancaire)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Civilite)
@@ -41,10 +38,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MotDePasse)
+            @Html.DisplayFor(modelItem => item.DossierReservation.NumeroCarteBancaire)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Civilite)

@@ -11,109 +11,116 @@ using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class ClientsController : Controller
+    public class VoyageImagesController : Controller
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
-        // GET: BackOffice/Clients
+        // GET: BackOffice/VoyageImages
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            var voyageImage = db.VoyageImage.Include(v => v.Voyage);
+            return View(voyageImage.ToList());
         }
 
-        // GET: BackOffice/Clients/Details/5
+        // GET: BackOffice/VoyageImages/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            if (voyageImage == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(voyageImage);
         }
 
-        // GET: BackOffice/Clients/Create
+        // GET: BackOffice/VoyageImages/Create
         public ActionResult Create()
         {
+            ViewBag.VoyageID = new SelectList(db.Voyages, "ID", "ID");
             return View();
         }
 
-        // POST: BackOffice/Clients/Create
+        // POST: BackOffice/VoyageImages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Create([Bind(Include = "ID,Name,ContentType,Content,VoyageID")] VoyageImage voyageImage)
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.VoyageImage.Add(voyageImage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            ViewBag.VoyageID = new SelectList(db.Voyages, "ID", "ID", voyageImage.VoyageID);
+            return View(voyageImage);
         }
 
-        // GET: BackOffice/Clients/Edit/5
+        // GET: BackOffice/VoyageImages/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            if (voyageImage == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            ViewBag.VoyageID = new SelectList(db.Voyages, "ID", "ID", voyageImage.VoyageID);
+            return View(voyageImage);
         }
 
-        // POST: BackOffice/Clients/Edit/5
+        // POST: BackOffice/VoyageImages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,Name,ContentType,Content,VoyageID")] VoyageImage voyageImage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(voyageImage).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            ViewBag.VoyageID = new SelectList(db.Voyages, "ID", "ID", voyageImage.VoyageID);
+            return View(voyageImage);
         }
 
-        // GET: BackOffice/Clients/Delete/5
+        // GET: BackOffice/VoyageImages/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            if (voyageImage == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(voyageImage);
         }
 
-        // POST: BackOffice/Clients/Delete/5
+        // POST: BackOffice/VoyageImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            VoyageImage voyageImage = db.VoyageImage.Find(id);
+            db.VoyageImage.Remove(voyageImage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
     }
 }

@@ -25,6 +25,9 @@ namespace BoVoyageP4.Data
 
         public DbSet<Voyage> Voyages { get; set; }
 
-        public DbSet<VoyageImage> VoyageImage { get; set; }
+        public DbSet<VoyageImage> VoyageImages { get; set; }
+
+        public DbSet<FormulaireContact> FormulaireContacts { get; set; }
+
     }
 }

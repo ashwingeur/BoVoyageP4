@@ -11,109 +11,111 @@ using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class ClientsController : Controller
+    public class FormulaireContactsController : Controller
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
-        // GET: BackOffice/Clients
+        // GET: BackOffice/FormulaireContacts
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            return View(db.FormulaireContacts.ToList());
         }
 
-        // GET: BackOffice/Clients/Details/5
+        // GET: BackOffice/FormulaireContacts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            FormulaireContact formulaireContact = db.FormulaireContacts.Find(id);
+            if (formulaireContact == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(formulaireContact);
         }
 
-        // GET: BackOffice/Clients/Create
+        // GET: BackOffice/FormulaireContacts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BackOffice/Clients/Create
+        // POST: BackOffice/FormulaireContacts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Create([Bind(Include = "ID,Email,Telephone,Question")] FormulaireContact formulaireContact)
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.FormulaireContacts.Add(formulaireContact);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            return View(formulaireContact);
         }
 
-        // GET: BackOffice/Clients/Edit/5
+        // GET: BackOffice/FormulaireContacts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            FormulaireContact formulaireContact = db.FormulaireContacts.Find(id);
+            if (formulaireContact == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(formulaireContact);
         }
 
-        // POST: BackOffice/Clients/Edit/5
+        // POST: BackOffice/FormulaireContacts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,Email,Telephone,Question")] FormulaireContact formulaireContact)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(formulaireContact).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            return View(formulaireContact);
         }
 
-        // GET: BackOffice/Clients/Delete/5
+        // GET: BackOffice/FormulaireContacts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            FormulaireContact formulaireContact = db.FormulaireContacts.Find(id);
+            if (formulaireContact == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(formulaireContact);
         }
 
-        // POST: BackOffice/Clients/Delete/5
+        // POST: BackOffice/FormulaireContacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            FormulaireContact formulaireContact = db.FormulaireContacts.Find(id);
+            db.FormulaireContacts.Remove(formulaireContact);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+       
     }
 }

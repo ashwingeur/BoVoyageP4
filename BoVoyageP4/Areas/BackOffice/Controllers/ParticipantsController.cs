@@ -11,109 +11,116 @@ using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class ClientsController : Controller
+    public class ParticipantsController : Controller
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
-        // GET: BackOffice/Clients
+        // GET: BackOffice/Participants
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            var participants = db.Participants.Include(p => p.DossierReservation);
+            return View(participants.ToList());
         }
 
-        // GET: BackOffice/Clients/Details/5
+        // GET: BackOffice/Participants/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Participant participant = db.Participants.Find(id);
+            if (participant == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(participant);
         }
 
-        // GET: BackOffice/Clients/Create
+        // GET: BackOffice/Participants/Create
         public ActionResult Create()
         {
+            ViewBag.IDDossierReservation = new SelectList(db.DossierReservations, "ID", "NumeroCarteBancaire");
             return View();
         }
 
-        // POST: BackOffice/Clients/Create
+        // POST: BackOffice/Participants/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Create([Bind(Include = "ID,IDDossierReservation,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Participant participant)
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.Participants.Add(participant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            ViewBag.IDDossierReservation = new SelectList(db.DossierReservations, "ID", "NumeroCarteBancaire", participant.IDDossierReservation);
+            return View(participant);
         }
 
-        // GET: BackOffice/Clients/Edit/5
+        // GET: BackOffice/Participants/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Participant participant = db.Participants.Find(id);
+            if (participant == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            ViewBag.IDDossierReservation = new SelectList(db.DossierReservations, "ID", "NumeroCarteBancaire", participant.IDDossierReservation);
+            return View(participant);
         }
 
-        // POST: BackOffice/Clients/Edit/5
+        // POST: BackOffice/Participants/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,IDDossierReservation,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Participant participant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(participant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            ViewBag.IDDossierReservation = new SelectList(db.DossierReservations, "ID", "NumeroCarteBancaire", participant.IDDossierReservation);
+            return View(participant);
         }
 
-        // GET: BackOffice/Clients/Delete/5
+        // GET: BackOffice/Participants/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Participant participant = db.Participants.Find(id);
+            if (participant == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(participant);
         }
 
-        // POST: BackOffice/Clients/Delete/5
+        // POST: BackOffice/Participants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            Participant participant = db.Participants.Find(id);
+            db.Participants.Remove(participant);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+       
     }
 }

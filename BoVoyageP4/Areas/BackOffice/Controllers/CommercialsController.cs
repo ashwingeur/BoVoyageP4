@@ -11,109 +11,111 @@ using BoVoyageP4.Models;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    public class ClientsController : Controller
+    public class CommercialsController : Controller
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
-        // GET: BackOffice/Clients
+        // GET: BackOffice/Commercials
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            return View(db.Commercials.ToList());
         }
 
-        // GET: BackOffice/Clients/Details/5
+        // GET: BackOffice/Commercials/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Commercial commercial = db.Commercials.Find(id);
+            if (commercial == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(commercial);
         }
 
-        // GET: BackOffice/Clients/Create
+        // GET: BackOffice/Commercials/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BackOffice/Clients/Create
+        // POST: BackOffice/Commercials/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Create([Bind(Include = "ID,Login,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Commercial commercial)
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.Commercials.Add(commercial);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            return View(commercial);
         }
 
-        // GET: BackOffice/Clients/Edit/5
+        // GET: BackOffice/Commercials/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Commercial commercial = db.Commercials.Find(id);
+            if (commercial == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(commercial);
         }
 
-        // POST: BackOffice/Clients/Edit/5
+        // POST: BackOffice/Commercials/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,Login,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Commercial commercial)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(commercial).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            return View(commercial);
         }
 
-        // GET: BackOffice/Clients/Delete/5
+        // GET: BackOffice/Commercials/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            Commercial commercial = db.Commercials.Find(id);
+            if (commercial == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(commercial);
         }
 
-        // POST: BackOffice/Clients/Delete/5
+        // POST: BackOffice/Commercials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            Commercial commercial = db.Commercials.Find(id);
+            db.Commercials.Remove(commercial);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
     }
 }
