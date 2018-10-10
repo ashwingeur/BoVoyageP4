@@ -35,7 +35,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                 else
                 {
                     Session["COMMERCIAL"] = admin;
-                    return RedirectToAction("Index", "Dashboard", new { area = "backoffice" });
+                    return RedirectToAction("Index", "TableauDeBord", new { area = "backoffice" });
                 }
 
             }

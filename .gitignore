@@ -262,3 +262,6 @@ __pycache__/
 /BoVoyageP4/connectionStrings.config
 *.pyc
 /BoVoyageP4/ConnectionStrings.config
+/BoVoyageP4/Migrations/201810101744537_II.resx
+/BoVoyageP4/Migrations/201810101744537_II.Designer.cs
+/BoVoyageP4/Migrations/201810101744537_II.cs

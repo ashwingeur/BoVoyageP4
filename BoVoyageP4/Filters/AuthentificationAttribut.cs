@@ -18,7 +18,7 @@ namespace BoVoyageP4.Filters
                 if (filterContext.HttpContext.Session["CLIENT"] == null)
                 {
                     filterContext.Controller.TempData["REDIRECT"] = filterContext.HttpContext.Request.Url.AbsoluteUri;
-                    filterContext.Result = new RedirectResult(@"\authentificationclient\login");
+                    filterContext.Result = new RedirectResult(@"\authentification\login");
                 }
             }
 
@@ -26,7 +26,7 @@ namespace BoVoyageP4.Filters
             {
                 if (filterContext.HttpContext.Session["COMMERCIAL"] == null)
                 {
-                    filterContext.Result = new RedirectResult(@"\authentificationcommercial\login");
+                    filterContext.Result = new RedirectResult(@"\backoffice\authentification\login");
                     //filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new{ controller="authentication", action= "login", area="backoffice" }));
                 }
             }

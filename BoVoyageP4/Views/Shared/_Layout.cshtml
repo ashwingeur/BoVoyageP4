@@ -23,11 +23,14 @@
                 <ul class="nav navbar-nav">
 
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                
+
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-right">
-                <li>@Html.ActionLink("Inscription", "Subscribe", "Clients")</li>
+                    <li>@Html.ActionLink("Inscription", "Subscribe", "Clients")</li>
+                </ul>
+                <ul class="nav navbar-right">
+                    <li><a href="@Url.Action("index", "TableauDeBord", new { area="backoffice" })">Espace Collaborateur</a></li>
                 </ul>
             </div>
         </div>

@@ -163,6 +163,7 @@
     <Compile Include="Areas\BackOffice\Controllers\DossierReservationsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\FormulaireContactsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\ParticipantsController.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\TableauDeBordController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
     <Compile Include="Filters\AuthentificationAttribut.cs" />
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\201810101503481_ChangementCivilite.cs" />
     <Compile Include="Migrations\201810101503481_ChangementCivilite.Designer.cs">
       <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101744537_II.cs" />
+    <Compile Include="Migrations\201810101744537_II.Designer.cs">
+      <DependentUpon>201810101744537_II.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthentificationViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -284,6 +289,7 @@
     <Content Include="Areas\BackOffice\Views\VoyageImages\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\VoyageImages\Index.cshtml" />
     <Content Include="connectionStrings.config" />
+    <Content Include="Areas\BackOffice\Views\TableauDeBord\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -352,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101503481_ChangementCivilite.resx">
       <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101744537_II.resx">
+      <DependentUpon>201810101744537_II.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
