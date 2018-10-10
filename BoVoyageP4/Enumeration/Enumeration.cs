@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace BoVoyageP4.Enumeration
+﻿namespace BoVoyageP4.Enumeration
 {
     public enum Etat
     {
@@ -22,5 +17,12 @@ namespace BoVoyageP4.Enumeration
     {
         Client,
         PlacesInsuffisantes
+    }
+
+    public enum Civilite
+    {
+        Monsieur,
+        Madame,
+        NonBinaire
     }
 }

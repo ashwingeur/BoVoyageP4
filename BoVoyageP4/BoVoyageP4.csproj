@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201810101448300_addImagesVoyages1.Designer.cs">
       <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810101503481_ChangementCivilite.cs" />
+    <Compile Include="Migrations\201810101503481_ChangementCivilite.Designer.cs">
+      <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuthentificationViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -313,6 +317,7 @@
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
     <Content Include="Views\Clients\Login.cshtml" />
+    <Content Include="Views\Home\DetailVoyage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -344,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101448300_addImagesVoyages1.resx">
       <DependentUpon>201810101448300_addImagesVoyages1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101503481_ChangementCivilite.resx">
+      <DependentUpon>201810101503481_ChangementCivilite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
