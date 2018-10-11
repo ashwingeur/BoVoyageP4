@@ -8,15 +8,18 @@ namespace BoVoyageP4.Models
         [Required]
         [StringLength(20)]
         [Index(IsUnique = true)]
+        public string login { get; set; }
+
+        [NotMapped]
         public string Login
         {
             get
             {
-                return Login;
+                return this.login;
             }
-            set
+            private set
             {
-                Login = this.Nom.Substring(0, 2) + this.Prenom.Substring(0, 2) + this.ID.ToString();
+                login = this.Nom.Substring(0, 2) + this.Prenom.Substring(0, 2) + this.ID.ToString();
             }
         }
 

@@ -1,10 +1,7 @@
 ﻿using BoVoyageP4.Controllers;
 using BoVoyageP4.Models;
 using BoVoyageP4.Outils;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
@@ -25,7 +22,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 var hash = model.Password.HashMD5();
                 var admin = db.Commercials.SingleOrDefault(
-                    x => x.Login == model.Login && x.MotDePasse == hash);
+                    x => x.login == model.Login && x.MotDePasse == hash);
 
                 if (admin == null)
                 {
@@ -37,7 +34,6 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                     Session["COMMERCIAL"] = admin;
                     return RedirectToAction("Index", "TableauDeBord", new { area = "backoffice" });
                 }
-
             }
             return View();
         }
@@ -47,7 +43,5 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Session.Remove("COMMERCIAL");
             return RedirectToAction("index", "home", new { area = "" });
         }
-
     }
 }
-
