@@ -42,7 +42,7 @@ namespace BoVoyageP4.Models
         public AgenceVoyage AgenceVoyage { get; set; }
 
         [Display(Name = "Images")]
-        public ICollection<VoyageImage> VoyageImages { get; set; }
+        public ICollection<VoyageImage> Images { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
         public Voyage() { }

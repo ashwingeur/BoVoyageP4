@@ -1,5 +1,4 @@
 ﻿using BoVoyageP4.Controllers;
-using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -51,10 +50,43 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Participants.Add(participant);
                 db.SaveChanges();
+
+                DossierReservation dossier = db.DossierReservations.Where(x => x.ID == participant.IDDossierReservation) as DossierReservation;
+                dossier.Participants.Add(participant);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.IDDossierReservation = new SelectList(db.DossierReservations, "ID", "NumeroCarteBancaire", participant.IDDossierReservation);
+            return View(participant);
+        }
+
+        public ActionResult Ajout()
+        {
+            TempData["IDDossier"] = TempData["IDDossier"];
+            return View();
+        }
+
+        // POST: BackOffice/Participants/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Ajout([Bind(Include = "ID,IDDossierReservation,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Participant participant)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Participants.Add(participant);
+                db.SaveChanges();
+
+                var dossier = db.DossierReservations.Find(participant.IDDossierReservation);
+                dossier.Participants.Add(participant);
+                db.Entry(dossier).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            TempData["IDDossier"] = participant.IDDossierReservation;
             return View(participant);
         }
 

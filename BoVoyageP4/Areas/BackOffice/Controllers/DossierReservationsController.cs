@@ -25,7 +25,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierReservation dossierReservation = db.DossierReservations.Find(id);
+            DossierReservation dossierReservation = db.DossierReservations.Include(x => x.Participants).SingleOrDefault(x => x.ID == id);
             if (dossierReservation == null)
             {
                 return HttpNotFound();
@@ -52,7 +52,8 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["IDDossier"] = dossierReservation.ID;
+                return RedirectToAction("Ajout", "Participants");
             }
 
             ViewBag.IDClient = new SelectList(db.Clients, "ID", "Email", dossierReservation.IDClient);

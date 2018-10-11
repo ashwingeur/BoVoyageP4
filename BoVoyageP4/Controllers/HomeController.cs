@@ -2,7 +2,8 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-
+using System.Net;
+using System.Data.Entity;
 namespace BoVoyageP4.Controllers
 {
     public class HomeController : BaseController
@@ -10,12 +11,10 @@ namespace BoVoyageP4.Controllers
         public ActionResult Index()
         {
             ViewData["Title"] = "Accueil";
+
             HomeIndexViewModel model = new HomeIndexViewModel();
-            model.Voyages = db.Voyages.Include("Destination")
-                                              .Include("VoyageImages")
-                                              .Where(x => x.DateAller >= DateTime.Now)
-                                              .OrderBy(x => x.DateAller)
-                                              .Take(5);
+            model.Voyages = db.Voyages.Include(v => v.Destination);
+                                         
             return View(model);
         }
 
