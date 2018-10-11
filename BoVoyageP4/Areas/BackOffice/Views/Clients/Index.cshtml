@@ -17,6 +17,19 @@
 </form>
 
 
+<div class="text-primary">
+    <form action="@Url.Action("Tri", "Clients")" id="Tri" method="get" enctype="multipart/form-data">
+        <ul class="nav navbar-nav">
+            <li>TRIER PAR   :   </li>
+            <li>NOM:   @Html.RadioButton("ChampsTri", "NOM")</li>
+            <li>CIVILITE: @Html.RadioButton("ChampsTri", "CIVILITE")</li>
+            <li>EMAIL: @Html.RadioButton("ChampsTri", "EMAIL")</li>
+            <li>DATE DE NAISSANCE: @Html.RadioButton("ChampsTri", "DATEDENAISSANCE")</li>
+        </ul>
+        <input type="submit" value="GO" />
+    </form>
+</div>
+
 <table class="table">
     <tr>
         <th>

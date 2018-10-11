@@ -23,6 +23,26 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         {
             return View("Index", db.Clients.Where(x => x.Nom.Contains(Filter)).ToList());
         }
+
+        public ActionResult Tri(string ChampsTri)
+        {
+            switch (ChampsTri)
+            {
+                case "NOM":
+                    return View("Index", db.Clients.OrderBy(x => x.Nom).ToList());
+                case "CIVILITE":
+                    return View("Index", db.Clients.OrderBy(x => x.Civilite).ToList());
+                case "DATEDENAISSANCE":
+                    return View("Index", db.Clients.OrderBy(x => x.DateNaissance).ToList());
+                case "EMAIL":
+                    return View("Index", db.Clients.OrderBy(x => x.Email).ToList());
+                default:
+                    return View("Index", db.Clients.OrderBy(x => x.Nom).ToList());
+            }
+
+        }
+
+
         //[Authentication]
         // GET: BackOffice/Clients/Details/5
         public ActionResult Details(int? id)
