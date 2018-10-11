@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class VoyagesController : BaseController
     {
         // GET: BackOffice/Voyages
