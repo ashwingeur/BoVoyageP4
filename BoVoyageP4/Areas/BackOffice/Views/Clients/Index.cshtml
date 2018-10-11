@@ -9,9 +9,12 @@
 <p>
     <a href="@Url.Action("subscribe", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
 </p>
-<p>
-    <a href="@Url.Action("Recherche", "Clients")" class="btn btn-primary" role="button">Recherche avancée</a>
-</p>
+<form action="@Url.Action("Recherche", "Clients")" id="Recherche" method="get" enctype="multipart/form-data">
+    <ul class="nav navbar-nav">
+        <li> <input type="text" class="form-control" id="Recherche" name="Filter" placeholder="Recherche par nom"></li>
+        <li><button type="submit" class="btn btn-info">Chercher</button></li>
+    </ul>
+</form>
 
 
 <table class="table">
