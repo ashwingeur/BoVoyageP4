@@ -79,7 +79,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                 db.SaveChanges();
 
                 db.Configuration.ValidateOnSaveEnabled = true;
-                Display("Clients enregistré");
+                Display("Client enregistré");
 
                 return RedirectToAction("index", "home");
             }
@@ -113,6 +113,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Client modifié");
                 return RedirectToAction("Index");
             }
             return View(client);
@@ -143,6 +144,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
             db.SaveChanges();
+            Display("Client effacé");
             return RedirectToAction("Index");
         }
     }

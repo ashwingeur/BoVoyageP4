@@ -49,6 +49,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Destinations.Add(destination);
                 db.SaveChanges();
+                Display("Destination enregistrée");
                 return RedirectToAction("Index");
             }
 
@@ -81,6 +82,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(destination).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Destination modifée");
                 return RedirectToAction("Index");
             }
             return View(destination);
@@ -109,6 +111,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Destination destination = db.Destinations.Find(id);
             db.Destinations.Remove(destination);
             db.SaveChanges();
+            Display("Destination effacée");
             return RedirectToAction("Index");
         }
     }
