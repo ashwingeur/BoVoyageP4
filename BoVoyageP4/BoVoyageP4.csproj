@@ -167,6 +167,7 @@
     <Compile Include="Areas\BackOffice\Controllers\VoyageImagesController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\VoyagesController.cs" />
     <Compile Include="Controllers\AuthentificationClientController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Filters\AuthentificationAttribut.cs" />
     <Compile Include="Helpers\BoVoyageHelpers.cs" />
     <Compile Include="Migrations\201810101221057_Second.cs" />
@@ -327,6 +328,7 @@
     <Content Include="Views\Clients\Login.cshtml" />
     <Content Include="Views\Home\DetailVoyage.cshtml" />
     <Content Include="Views\Shared\_PartialDisplay.cshtml" />
+    <Content Include="Views\Reservation\Reservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
