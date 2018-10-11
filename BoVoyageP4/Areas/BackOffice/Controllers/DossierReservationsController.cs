@@ -25,7 +25,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierReservation dossierReservation = db.DossierReservations.Find(id);
+            DossierReservation dossierReservation = db.DossierReservations.Include(x => x.Participants).SingleOrDefault(x => x.ID == id);
             if (dossierReservation == null)
             {
                 return HttpNotFound();
