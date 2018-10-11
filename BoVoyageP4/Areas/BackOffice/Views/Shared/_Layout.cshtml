@@ -21,19 +21,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Agence", "Index", "AgenceVoyages", new { area = "BackOffice" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("voyage", "Index", "Voyages", new { area = "BackOffice" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Destination", "Index", "Destinations", new { area = "BackOffice" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Client", "Index", "Clients", new { area = "BackOffice" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Assurance", "Index", "Assurances", new { area = "BackOffice" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Commercial", "Index", "Commercials", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Agences", "Index", "AgenceVoyages", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Voyages", "Index", "Voyages", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Destinations", "Index", "Destinations", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Clients", "Index", "Clients", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Assurances", "Index", "Assurances", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Commerciaux", "Index", "Commercials", new { area = "BackOffice" }, new { @class = "navbar-brand" })
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
                 <ul class="nav navbar-nav navbar-right" style="color:red">
                     <li>
-                        <p>Bonjour @admin.Prenom @admin.Nom</p>
+                        <p class = "navbar-brand">Bonjour @admin.Prenom @admin.Nom </p>
                     </li>
                     <li>
                         <a id="logout" href="@Url.Action("Logout", "authentification")"><i class="glyphicon glyphicon-log-out"></i></a>
