@@ -1,0 +1,80 @@
+﻿@model List<BoVoyageP4.Models.Participant>
+
+@{
+    ViewBag.Title = "Ajout d'un participant";
+    var idd = TempData["IDDossier"] as Object;
+    var nbp = int.Parse(TempData["Participants"].ToString());
+}
+
+<h2>Ajout</h2>
+@if (nbp > 0)
+{
+    for (int i = 0; i < nbp; i++)
+    {
+        var participant = new BoVoyageP4.Models.Participant();
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.Hidden("IDDossierReservation", idd);
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.Civilite, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.Civilite, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.Nom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.Prenom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.Adresse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => participant.DateNaissance, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => participant.DateNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => participant.DateNaissance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
