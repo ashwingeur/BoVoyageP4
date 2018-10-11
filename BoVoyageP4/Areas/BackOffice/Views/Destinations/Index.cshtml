@@ -42,9 +42,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a href="@Url.Action("Modifier", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
                 <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
-                <a href="@Url.Action("Suprimmer", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     }
