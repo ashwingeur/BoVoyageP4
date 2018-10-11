@@ -49,6 +49,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.AgencesVoyages.Add(agenceVoyage);
                 db.SaveChanges();
+                Display("Agence de Voyage enregistrée");
                 return RedirectToAction("Index");
             }
 
@@ -81,6 +82,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(agenceVoyage).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Agence de Voyage mofidiée");
                 return RedirectToAction("Index");
             }
             return View(agenceVoyage);
@@ -109,6 +111,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             AgenceVoyage agenceVoyage = db.AgencesVoyages.Find(id);
             db.AgencesVoyages.Remove(agenceVoyage);
             db.SaveChanges();
+            Display("Agence de Voyage effacée");
             return RedirectToAction("Index");
         }
     }

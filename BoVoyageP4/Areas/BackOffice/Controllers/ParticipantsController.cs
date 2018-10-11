@@ -58,6 +58,30 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(participant);
         }
 
+        public ActionResult Ajout()
+        {
+            TempData["IDDossier"] = TempData["IDDossier"];
+            return View();
+        }
+
+        // POST: BackOffice/Participants/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Ajout([Bind(Include = "ID,IDDossierReservation,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Participant participant)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Participants.Add(participant);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            TempData["IDDossier"] = participant.IDDossierReservation;
+            return View(participant);
+        }
+
         // GET: BackOffice/Participants/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -49,6 +49,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Assurances.Add(assurance);
                 db.SaveChanges();
+                Display("Assurance crée");
                 return RedirectToAction("Index");
             }
 
@@ -81,6 +82,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(assurance).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Assurance modifée");
                 return RedirectToAction("Index");
             }
             return View(assurance);
@@ -109,6 +111,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Assurance assurance = db.Assurances.Find(id);
             db.Assurances.Remove(assurance);
             db.SaveChanges();
+            Display("Assurance effacée");
             return RedirectToAction("Index");
         }
     }

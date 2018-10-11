@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var client = Session["CLIENT"] as BoVoyageP4.Models.Client;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -32,14 +35,42 @@
                 <ul class="nav navbar-right">
                     <li><a href="@Url.Action("index", "TableauDeBord", new { area="backoffice" })">Espace Collaborateur</a></li>
                 </ul>
+                @if (client == null)
+                {
+                    <!--
+
+                    GTM:Url.Action("login", "AuthentificationClient") dont work
+                    <form class="navbar-form navbar-right" method="post" action="@Url.Action("login", "AuthentificationClient")">
+                        <div class="form-group">
+                            <input type="text" name="Email" class="form-control" placeholder="Login">
+                            <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" />
+                        </div>
+                        <button type="submit" class="btn btn-info">OK</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("subscribe", "clients")">Inscription</a></li>
+                    </ul>
+                    -->
+
+                    <li><a href="@Url.Action("Login","AuthentificationClient",new { area="" } )">Se connecter</a></li>
+
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>Bonjour @client.Prenom</li>
+                        <li><a href="@Url.Action("logout", "AuthentificationClient")"><i class="glyphicon glyphicon-log-out"></i></a></li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
     <div class="container body-content">
+        @Html.Partial("_PartialDisplay")
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Team LAS</p>
+            <p>&copy; @DateTime.Now.Year - BoVoyage</p>
         </footer>
     </div>
 

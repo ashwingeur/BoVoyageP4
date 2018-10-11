@@ -52,7 +52,8 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["IDDossier"] = dossierReservation.ID;
+                return RedirectToAction("Ajout", "Participants");
             }
 
             ViewBag.IDClient = new SelectList(db.Clients, "ID", "Email", dossierReservation.IDClient);
