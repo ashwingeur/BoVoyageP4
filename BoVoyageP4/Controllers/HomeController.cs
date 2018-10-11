@@ -12,7 +12,7 @@ namespace BoVoyageP4.Controllers
             ViewData["Title"] = "Accueil";
             HomeIndexViewModel model = new HomeIndexViewModel();
             model.Voyages = db.Voyages.Include("Destination")
-                                              .Include("VoyageImages")
+                                              .Include("Images")
                                               .Where(x => x.DateAller >= DateTime.Now)
                                               .OrderBy(x => x.DateAller)
                                               .Take(5);

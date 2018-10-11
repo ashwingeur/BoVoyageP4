@@ -1,5 +1,5 @@
 ﻿@model BoVoyageP4.Models.Voyage
-
+@using BoVoyageP4.Helpers;
 @{
     ViewBag.Title = "Edit";
 }
@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Voyage</h4>
         <hr />
@@ -71,6 +71,32 @@
         </div>
     </div>
 }
+
+<div class="col-md-6">
+    <h3>Images</h3>
+    <form action="@Url.Action("AjoutImage", "Voyages")" method="post" enctype="multipart/form-data">
+        @Html.HiddenFor(x => x.ID)
+        <div class="form-group">
+            <label for="if">Fichier</label>
+            <input type="file" id="if" name="picture">
+        </div>
+        <button type="submit" class="btn btn-info">Enregistrer</button>
+    </form>
+    <div class="row">
+        @if (Model.Images != null)
+        {
+            foreach (var image in Model.Images)
+            {
+                <div class="col-md-3" id="div-@image.ID">
+                    <p>@image <a href="#" class="delete" data-id="@image"><i class="glyphicon glyphicon-trash"></i></a></p>
+                    @*@<img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>*@
+                    @Html.VoyageImage(image, "img-thumbnail")
+                </div>
+            }
+        }
+
+    </div>
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
