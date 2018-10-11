@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BoVoyageP4.Validateurs;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BoVoyageP4.Models
@@ -8,20 +9,8 @@ namespace BoVoyageP4.Models
         [Required]
         [StringLength(20)]
         [Index(IsUnique = true)]
-        public string login { get; set; }
-
-        [NotMapped]
-        public string Login
-        {
-            get
-            {
-                return this.login;
-            }
-            private set
-            {
-                login = this.Nom.Substring(0, 2) + this.Prenom.Substring(0, 2) + this.ID.ToString();
-            }
-        }
+        [Login]
+        public string Login { get; set; }
 
         [Display(Name = "Mot de passe")]
         [DataType(DataType.Password)]

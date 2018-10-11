@@ -1,5 +1,6 @@
 ﻿using BoVoyageP4.Controllers;
 using BoVoyageP4.Models;
+using BoVoyageP4.Outils;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -41,13 +42,22 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Login,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Commercial commercial)
+        public ActionResult Create([Bind(Include = "Login,MotDePasse,MotDePasseVerification,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Commercial commercial)
         {
+            //commerciale.Login = commerciale.Nom.Substring(0, 2) + commerciale.Prenom.Substring(0, 2) + commerciale.ID.ToString();
             if (ModelState.IsValid)
             {
+                commercial.MotDePasse = commercial.MotDePasse.HashMD5();
+                commercial.MotDePasseVerification = commercial.MotDePasseVerification.HashMD5();
+
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.Commercials.Add(commercial);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                db.Configuration.ValidateOnSaveEnabled = true;
+                Display("Commercial enregistré");
+
+                return RedirectToAction("index", "TableauDeBord");
             }
 
             return View(commercial);
