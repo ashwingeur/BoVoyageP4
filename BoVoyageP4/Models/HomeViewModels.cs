@@ -5,7 +5,8 @@ using System.Web;
 
 namespace BoVoyageP4.Models
 {
-    public class ListeVoyageHome
+    public class HomeIndexViewModel
+
     {
         public IEnumerable<Voyage> Voyages { get; set; }
     }
