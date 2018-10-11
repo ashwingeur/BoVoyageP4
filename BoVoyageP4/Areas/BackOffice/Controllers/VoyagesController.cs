@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -7,12 +8,13 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class VoyagesController : BaseController
     {
         // GET: BackOffice/Voyages
         public ActionResult Index()
         {
-            var voyages = db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination);//.Include("Images");
+            var voyages = db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).Include(v => v.VoyageImages);
             return View(voyages.ToList());
         }
 

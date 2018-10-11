@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using BoVoyageP4.Outils;
 using System.Data.Entity;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class CommercialsController : BaseController
     {
         // GET: BackOffice/Commercials
@@ -89,6 +91,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(commercial).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Commercial modifié");
                 return RedirectToAction("Index");
             }
             return View(commercial);
@@ -117,6 +120,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Commercial commercial = db.Commercials.Find(id);
             db.Commercials.Remove(commercial);
             db.SaveChanges();
+            Display("Commercial effacé");
             return RedirectToAction("Index");
         }
     }

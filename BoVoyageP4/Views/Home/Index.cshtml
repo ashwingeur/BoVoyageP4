@@ -1,5 +1,5 @@
 ﻿
-@model BoVoyageP4.Models.ListeVoyageHome
+@model BoVoyageP4.Models.HomeIndexViewModel
 @using BoVoyageP4.Helpers;
 
 <div class="row">
@@ -7,9 +7,9 @@
     {
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                @if (item.VoyageImage?.Count() > 0)
+                @if (item.VoyageImages?.Count() > 0)
                 {
-                    @Html.VoyageImage(item.VoyageImage.First(), "img-circle")
+                    @Html.VoyageImage(item.VoyageImages.First(), "img-circle")
                 }
                 <div class="caption">
                     <h3>@item.Destination</h3>

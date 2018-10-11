@@ -10,9 +10,9 @@ namespace BoVoyageP4.Controllers
         public ActionResult Index()
         {
             ViewData["Title"] = "Accueil";
-            ListeVoyageHome model = new ListeVoyageHome();
+            HomeIndexViewModel model = new HomeIndexViewModel();
             model.Voyages = db.Voyages.Include("Destination")
-                                              .Include("VoyageImage")
+                                              .Include("VoyageImages")
                                               .Where(x => x.DateAller >= DateTime.Now)
                                               .OrderBy(x => x.DateAller)
                                               .Take(5);

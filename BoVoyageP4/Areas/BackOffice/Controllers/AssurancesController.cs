@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class AssurancesController : BaseController
     {
         // GET: BackOffice/Assurances
@@ -47,6 +49,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Assurances.Add(assurance);
                 db.SaveChanges();
+                Display("Assurance crée");
                 return RedirectToAction("Index");
             }
 
@@ -79,6 +82,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(assurance).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Assurance modifée");
                 return RedirectToAction("Index");
             }
             return View(assurance);
@@ -107,6 +111,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Assurance assurance = db.Assurances.Find(id);
             db.Assurances.Remove(assurance);
             db.SaveChanges();
+            Display("Assurance effacée");
             return RedirectToAction("Index");
         }
     }

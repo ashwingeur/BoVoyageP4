@@ -206,7 +206,7 @@
     <Compile Include="Models\Destination.cs" />
     <Compile Include="Models\DossierReservation.cs" />
     <Compile Include="Models\FormulaireContact.cs" />
-    <Compile Include="Models\ListeVoyageHome.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\Voyage.cs" />
@@ -288,6 +288,7 @@
     <Content Include="Areas\BackOffice\Views\VoyageImages\Index.cshtml" />
     <Content Include="connectionStrings.config" />
     <Content Include="Areas\BackOffice\Views\TableauDeBord\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Areas\BackOffice\Views\Participants\Ajout.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -309,7 +310,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -323,6 +323,7 @@
     <Content Include="Views\Clients\Subscribe.cshtml" />
     <Content Include="Views\Clients\Login.cshtml" />
     <Content Include="Views\Home\DetailVoyage.cshtml" />
+    <Content Include="Views\Shared\_PartialDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class AgenceVoyagesController : BaseController
     {
         // GET: BackOffice/AgenceVoyages
@@ -47,6 +49,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.AgencesVoyages.Add(agenceVoyage);
                 db.SaveChanges();
+                Display("Agence de Voyage enregistrée");
                 return RedirectToAction("Index");
             }
 
@@ -79,6 +82,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(agenceVoyage).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Agence de Voyage mofidiée");
                 return RedirectToAction("Index");
             }
             return View(agenceVoyage);
@@ -107,6 +111,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             AgenceVoyage agenceVoyage = db.AgencesVoyages.Find(id);
             db.AgencesVoyages.Remove(agenceVoyage);
             db.SaveChanges();
+            Display("Agence de Voyage effacée");
             return RedirectToAction("Index");
         }
     }

@@ -11,7 +11,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
     public class AuthentificationClientController : BaseController
     {
-        // GET: BackOffice/Authentification
+        // GET: AuthentificationClient
         public ActionResult Login()
         {
             return View();
