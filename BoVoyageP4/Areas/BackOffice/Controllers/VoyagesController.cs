@@ -131,17 +131,17 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         {
             if (image?.ContentLength > 0)
             {
-                var tp = new VoyageImage();
-                tp.ContentType = image.ContentType;
-                tp.Name = image.FileName;
-                tp.VoyageID = id;
+                var img = new VoyageImage();
+                img.ContentType = image.ContentType;
+                img.Name = image.FileName;
+                img.VoyageID = id;
 
                 using (var reader = new BinaryReader(image.InputStream))
                 {
-                    tp.Content = reader.ReadBytes(image.ContentLength);
+                    img.Content = reader.ReadBytes(image.ContentLength);
                 }
 
-                db.VoyageImages.Add(tp);
+                db.VoyageImages.Add(img);
                 db.SaveChanges();
 
                 return RedirectToAction("edit", "voyages", new { id });
