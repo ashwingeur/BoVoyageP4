@@ -292,6 +292,7 @@
     <Content Include="Areas\BackOffice\Views\TableauDeBord\Index.cshtml" />
     <Content Include="Areas\BackOffice\Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Areas\BackOffice\Views\Participants\Ajout.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Clients\Recherche.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

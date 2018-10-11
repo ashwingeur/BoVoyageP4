@@ -15,9 +15,18 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // GET: BackOffice/Clients
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            //  return View(db.Clients.ToList());
+            return View(db.Clients.OrderBy(x => x.Nom).ToList());
         }
 
+        public ActionResult Recherche()
+        {
+            return View(db.Clients.OrderBy(x => x.Nom).ToList());
+        }
+        public ActionResult RechercheFiltre(string Filter)
+        {
+            return View("Recherche",db.Clients.Where(x => x.Nom.Contains(Filter)).ToList());
+        }
         //[Authentication]
         // GET: BackOffice/Clients/Details/5
         public ActionResult Details(int? id)
