@@ -1,5 +1,4 @@
 ﻿using BoVoyageP4.Controllers;
-using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -51,6 +50,10 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Participants.Add(participant);
                 db.SaveChanges();
+
+                DossierReservation dossier = db.DossierReservations.Where(x => x.ID == participant.IDDossierReservation) as DossierReservation;
+                dossier.Participants.Add(participant);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -74,6 +77,11 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             if (ModelState.IsValid)
             {
                 db.Participants.Add(participant);
+                db.SaveChanges();
+
+                var dossier = db.DossierReservations.Find(participant.IDDossierReservation);
+                dossier.Participants.Add(participant);
+                db.Entry(dossier).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
