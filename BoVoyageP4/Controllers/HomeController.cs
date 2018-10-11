@@ -24,8 +24,8 @@ namespace BoVoyageP4.Controllers
         {
             var modelInfo = new Info
             {
-                NomDeveloppeur = "TEAM LAS",
-                ContactMail = "contact@teamlas.com",
+                NomDeveloppeur = "GTM Team",
+                ContactMail = "ALS@GTM.FR",
                 DateCreation = DateTime.Now
             };
             return View(modelInfo);
@@ -33,7 +33,7 @@ namespace BoVoyageP4.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Votre page de contact";
 
             return View();
         }
