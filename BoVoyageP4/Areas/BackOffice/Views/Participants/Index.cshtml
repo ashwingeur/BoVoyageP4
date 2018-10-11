@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<BoVoyageP4.Models.Participant>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestion Participants";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Participants")" class="btn btn-primary" role="button">Nouveau Participant</a>
 </p>
 <table class="table">
     <tr>
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.DateNaissance)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a href="@Url.Action("Modifier", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+            <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+            <a href="@Url.Action("Suprimmer", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
         </td>
     </tr>
 }

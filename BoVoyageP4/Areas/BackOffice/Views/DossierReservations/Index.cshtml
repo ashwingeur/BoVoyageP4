@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<BoVoyageP4.Models.DossierReservation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestion des Dossiers de Reservation";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "DossierReservations")" class="btn btn-primary" role="button">Nouveau Dossiers de Reservation</a>
 </p>
 <table class="table">
     <tr>
@@ -35,35 +35,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Voyage.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumeroCarteBancaire)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrixParPersonne)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EtatDossierReservation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RaisonAnnulationDossier)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrixTotal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voyage.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroCarteBancaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixParPersonne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EtatDossierReservation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaisonAnnulationDossier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixTotal)
+            </td>
+            <td>
+                <a href="@Url.Action("Modifier", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+                <a href="@Url.Action("Suprimmer", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>
