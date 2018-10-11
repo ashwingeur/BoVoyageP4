@@ -7,8 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("subscribe", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
 </p>
+<p>
+    <a href="@Url.Action("Recherche", "Clients")" class="btn btn-primary" role="button">Recherche avancée</a>
+</p>
+
+
 <table class="table">
     <tr>
         <th>
