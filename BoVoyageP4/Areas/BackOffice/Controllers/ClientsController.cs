@@ -1,4 +1,5 @@
 ﻿using BoVoyageP4.Controllers;
+using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using BoVoyageP4.Outils;
 using System.Data.Entity;
@@ -10,12 +11,14 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
     public class ClientsController : BaseController
     {
+        //[Authentication]
         // GET: BackOffice/Clients
         public ActionResult Index()
         {
             return View(db.Clients.ToList());
         }
 
+        //[Authentication]
         // GET: BackOffice/Clients/Details/5
         public ActionResult Details(int? id)
         {
@@ -31,12 +34,14 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
+       // [Authentication]
         // GET: BackOffice/Clients/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        //[Authentication]
         // POST: BackOffice/Clients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -96,10 +101,10 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             }
             return View(client);
         }
-
         // POST: BackOffice/Clients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authentication(Type = "CLIENT")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
@@ -114,6 +119,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // GET: BackOffice/Clients/Delete/5
+        [Authentication]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,6 +135,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/Clients/Delete/5
+        [Authentication]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
