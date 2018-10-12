@@ -130,10 +130,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         {
             db.Voyages.Include("Images"); ;
 
-
-
-
-            if (voyage.DateRetour <= voyage.DateAller)
+            if ((voyage.DateRetour <= voyage.DateAller) || (voyage.DateAller < DateTime.Now))
             {
                 Display("Attention verifiez vos dates!", MessageType.ERROR);
             }
