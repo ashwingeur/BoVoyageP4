@@ -23,10 +23,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model[i].Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Civilite, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Civilite, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model[i].Civilite, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model[i].Civilite, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -88,7 +88,6 @@
 
     <script>
         $(function () {
-
 
             $('#DateNaissance').datetimepicker({
                 lang: 'fr',
