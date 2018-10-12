@@ -325,7 +325,6 @@
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
     <Content Include="Views\Clients\Login.cshtml" />
-    <Content Include="Views\Home\DetailVoyage.cshtml" />
     <Content Include="Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Reservation\Ajout.cshtml" />
