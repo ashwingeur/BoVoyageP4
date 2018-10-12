@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Participant</h4>
         <hr />
@@ -81,3 +81,21 @@
 <div>
     @Html.ActionLink("Retour à la liste", "Index")
 </div>
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+
+    <script>
+        $(function () {
+
+
+            $('#DateNaissance').datetimepicker({
+                lang: 'fr',
+
+                format: 'd/m/y'
+            });
+
+        });
+    </script>
+}

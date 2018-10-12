@@ -96,3 +96,21 @@
 <div>
     @Html.ActionLink("Retour à la liste", "Index")
 </div>
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+
+    <script>
+        $(function () {
+
+
+            $('#DateNaissance').datetimepicker({
+                lang: 'fr',
+
+                format: 'd/m/y'
+            });
+
+        });
+    </script>
+}
