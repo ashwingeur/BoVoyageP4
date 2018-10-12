@@ -2,17 +2,16 @@
 
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Creer un voyage";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Voyage</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -67,7 +66,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -87,12 +86,17 @@
     <script>
         $(function () {
         
-            $('#DateNaissance').datetimepicker({
+            $('#DateAller').datetimepicker({
                 lang: 'fr',
 
                 format: 'd/m/y'
             });
-         
+
+            $('#DateRetour').datetimepicker({
+                lang: 'fr',
+
+                format: 'd/m/y'
+            });
         });
     </script>
 }
