@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            N°
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Client.Email)
         </th>
         <th>
@@ -30,6 +33,9 @@
             @Html.DisplayNameFor(model => model.RaisonAnnulationDossier)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Participants)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PrixTotal)
         </th>
         <th></th>
@@ -38,6 +44,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Client.Email)
             </td>
@@ -57,6 +66,9 @@
                 @Html.DisplayFor(modelItem => item.RaisonAnnulationDossier)
             </td>
             <td>
+                @item.Participants.Count()
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PrixTotal)
             </td>
             <td>
@@ -66,5 +78,4 @@
             </td>
         </tr>
     }
-
 </table>

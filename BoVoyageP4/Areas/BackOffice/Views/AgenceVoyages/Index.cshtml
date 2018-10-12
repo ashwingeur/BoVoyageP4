@@ -12,22 +12,27 @@
 <table class="table">
     <tr>
         <th>
+            N°
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Nom)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
-            <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
-            <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+                <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
 </table>

@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            N°
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DossierReservation.NumeroCarteBancaire)
         </th>
         <th>
@@ -35,35 +38,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DossierReservation.NumeroCarteBancaire)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Civilite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prenom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telephone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateNaissance)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
-            <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
-            <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DossierReservation.NumeroCarteBancaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Civilite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+                <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
 </table>

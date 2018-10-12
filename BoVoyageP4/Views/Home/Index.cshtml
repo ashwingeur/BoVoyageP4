@@ -63,7 +63,7 @@
                         <p>Date Aller:@item.DateAller.ToString("ddd dd MMM yyyy ")</p>
                         <p>Date Retour:@item.DateRetour.ToString("ddd dd MMM yyyy ")</p>
                         @Html.ActionLink("Reservez vite!", "Reservation/" + @item.ID, "Reservation", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
-                        @Html.ActionLink("Plus d'Infos", "Details/" + @item.ID, "Home", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
+                        <p><a href="@Url.RouteUrl("DetailsVoyage", new { id=item.ID, pays = item.Destination.Pays })" class="btn btn-primary" role="button">Voir les détails</a>
 
                     </div>
                 </div>

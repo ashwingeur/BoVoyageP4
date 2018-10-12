@@ -24,10 +24,12 @@ namespace BoVoyageP4.Controllers
             {
                 dossierReservation.Assurances = new List<Assurance>();
                 dossierReservation.Assurances.Add(Assurance);
+                dossierReservation.PrixTotal = Assurance.Montant;
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
                 Session["IDDossier"] = dossierReservation.ID;
                 Session["Participants"] = nbParticipants;
+                Display("Demande en cours a votre banque...");
                 return RedirectToAction("Ajout");
             }
             ViewBag.Assurances = new SelectList(db.Assurances, "ID", "Nom", dossierReservation.Assurances);

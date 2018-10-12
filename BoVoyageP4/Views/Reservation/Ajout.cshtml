@@ -16,7 +16,7 @@
             @for (int i = 0; i < nbp; i++)
             {
                 <div class="container panel panel-footer form-horizontal" style="margin:5px;">
-                    <h5>Participant N°@i</h5>
+                    <h5>Participant N°@(i+1)</h5>
                     <div class="form-group">
                         @Html.LabelFor(model => model[i].Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -78,3 +78,22 @@
 <div>
     @Html.ActionLink("Retour à la liste", "Index")
 </div>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+
+    <script>
+        $(function () {
+
+
+            $('#DateNaissance').datetimepicker({
+                lang: 'fr',
+
+                format: 'd/m/y'
+            });
+
+        });
+    </script>
+}

@@ -15,6 +15,7 @@
 
     public enum RaisonAnnulationDossier
     {
+        NonAnnuler,
         Client,
         PlacesInsuffisantes
     }

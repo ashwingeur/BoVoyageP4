@@ -35,6 +35,9 @@
 <table class="table">
     <tr>
         <th>
+            N°
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AgenceVoyage.Nom)
         </th>
         <th>
@@ -55,32 +58,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AgenceVoyage.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Destination.Region)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateAller)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateRetour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlacesDisponibles)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrixParPersonne)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
-            <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
-            <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgenceVoyage.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRetour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacesDisponibles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixParPersonne)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+                <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
 </table>

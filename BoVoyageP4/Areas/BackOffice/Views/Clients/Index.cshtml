@@ -16,7 +16,6 @@
     </ul>
 </form>
 
-
 <div class="text-primary">
     <form action="@Url.Action("Tri", "Clients")" id="Tri" method="get" enctype="multipart/form-data">
         <ul class="nav navbar-nav">
@@ -33,6 +32,9 @@
 
 <table class="table">
     <tr>
+        <th>
+            N°
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -64,6 +66,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
@@ -94,5 +99,4 @@
             </td>
         </tr>
     }
-
 </table>
