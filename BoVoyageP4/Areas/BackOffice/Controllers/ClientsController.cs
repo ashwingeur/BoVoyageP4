@@ -118,6 +118,12 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
+        public ActionResult EspacePersonnel()
+        {
+            return View();
+        }
+
+
         // GET: BackOffice/Clients/Edit/5
         [Authentication]
         public ActionResult Edit(int? id)

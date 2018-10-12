@@ -496,6 +496,7 @@
     <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Reservation\Ajout.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Clients\EspacePersonnel.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />

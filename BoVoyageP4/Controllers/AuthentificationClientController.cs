@@ -48,6 +48,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 
+        
     }
 }
 
