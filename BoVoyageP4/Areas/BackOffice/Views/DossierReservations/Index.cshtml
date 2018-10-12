@@ -30,6 +30,9 @@
             @Html.DisplayNameFor(model => model.RaisonAnnulationDossier)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Participants)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PrixTotal)
         </th>
         <th></th>
@@ -57,6 +60,9 @@
                 @Html.DisplayFor(modelItem => item.RaisonAnnulationDossier)
             </td>
             <td>
+                @item.Participants.Count()
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PrixTotal)
             </td>
             <td>
@@ -66,5 +72,4 @@
             </td>
         </tr>
     }
-
 </table>

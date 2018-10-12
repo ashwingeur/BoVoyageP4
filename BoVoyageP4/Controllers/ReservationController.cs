@@ -24,6 +24,7 @@ namespace BoVoyageP4.Controllers
             {
                 dossierReservation.Assurances = new List<Assurance>();
                 dossierReservation.Assurances.Add(Assurance);
+                dossierReservation.PrixTotal = Assurance.Montant;
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
                 Session["IDDossier"] = dossierReservation.ID;

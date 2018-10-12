@@ -33,20 +33,23 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 case "NOM":
                     return View("Index", db.Clients.OrderBy(x => x.Nom).ToList());
+
                 case "CIVILITE":
                     return View("Index", db.Clients.OrderBy(x => x.Civilite).ToList());
+
                 case "DATEDENAISSANCE":
                     return View("Index", db.Clients.OrderBy(x => x.DateNaissance).ToList());
+
                 case "EMAIL":
                     return View("Index", db.Clients.OrderBy(x => x.Email).ToList());
+
                 case "ORDREINSCRIPTION":
                     return View("Index", db.Clients.ToList());
+
                 default:
                     return View("Index", db.Clients.OrderBy(x => x.Nom).ToList());
             }
-
         }
-
 
         [Authentication]
         // GET: BackOffice/Clients/Details/5
@@ -118,11 +121,31 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
-        public ActionResult EspacePersonnel()
+        public ActionResult EspacePersonnel(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                if (Session["CLIENT"] != null)
+                {
+                    id = ((Client)Session["CLIENT"]).ID;
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+            }
+            Client client = db.Clients.SingleOrDefault(x => x.ID == id);
+            client.DossierReservation = db.DossierReservations.Include(x => x.Voyage).ToList();
+            foreach (var dossier in client.DossierReservation)
+            {
+                dossier.Voyage = db.Voyages.Include(x => x.Destination).SingleOrDefault(x => x.ID == dossier.IDVoyage);
+            }
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
         }
-
 
         // GET: BackOffice/Clients/Edit/5
         [Authentication]
@@ -139,6 +162,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             }
             return View(client);
         }
+
         // POST: BackOffice/Clients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
