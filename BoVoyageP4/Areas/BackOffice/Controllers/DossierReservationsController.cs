@@ -25,12 +25,17 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierReservation dossierReservation = db.DossierReservations.Include(x => x.Participants).SingleOrDefault(x => x.ID == id);
+            DossierReservation dossierReservation = db.DossierReservations.Include(x => x.Client).Include(x => x.Participants).SingleOrDefault(x => x.ID == id);
             if (dossierReservation == null)
             {
                 return HttpNotFound();
             }
             return View(dossierReservation);
+        }
+
+        public ActionResult ChangementEtat()
+        {
+            return View("Details");
         }
 
         // GET: BackOffice/DossierReservations/Create

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - INTRANET</title>
     @Styles.Render("~/Content/css")
-
+    <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar-default sidebar" role="navigation" style="background-color: #e3f2fd;">
@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav"></ul>
                 <ul class="nav navbar-nav navbar-right" style="color:red">
                     <li>
-                        <p class = "navbar-brand">Bonjour @admin.Prenom @admin.Nom </p>
+                        <p class="navbar-brand">Bonjour @admin.Prenom @admin.Nom </p>
                     </li>
                     <li>
                         <a id="logout" href="@Url.Action("Logout", "authentification")"><i class="glyphicon glyphicon-log-out"></i></a>
