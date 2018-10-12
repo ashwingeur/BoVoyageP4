@@ -1,4 +1,94 @@
-﻿
+﻿@model BoVoyageP4.Models.TableauDeBord
 
-<h2>@ViewBag.Title</h2>
 
+@{
+    ViewBag.Title = "tableau de bord";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Reservations en attente</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    Client
+                </th>
+                <th>
+                    Numero de dossier
+                </th>
+                <th>
+                    Etat du dossier
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.DossierReservation)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client.Prenom)
+                        @Html.DisplayFor(modelItem => item.Client.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EtatDossierReservation)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Departs dans les 15 prochains jours</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    Destination
+                </th>
+                <th>
+                    Date aller
+                </th>
+                <th>
+                    Date de retour
+                </th>
+                <th>
+                    Places restantes
+                </th>
+                <th>
+                    Prix public
+                </th>
+                <th></th>
+
+            </tr>
+
+            @foreach (var item in Model.Voyage)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination.Pays)
+                        @Html.DisplayFor(modelItem => item.Destination.Region)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAller)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateRetour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlacesDisponibles)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrixParPersonne)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
