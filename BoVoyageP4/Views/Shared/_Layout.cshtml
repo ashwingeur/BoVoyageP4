@@ -16,15 +16,15 @@
 
 <body>
     <div class="navbar navbar-light" style="background-color: #e3f2fd;">
+                @Html.ActionLink("BoVoyage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="container">
             <div class="navbar-header">
+
+
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <button>
-                    @Html.ActionLink("BoVoyage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "border:1px solid red" })
                 </button>
             </div>
             <div class="navbar-collapse collapse">
