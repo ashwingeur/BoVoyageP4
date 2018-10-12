@@ -73,6 +73,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.FormulaireContacts.Add(formulaireContact);
                 db.SaveChanges();
+                Display("Question envoyée merci pour votre interet pour BoVoyage. Vous serez contacté bientot.");
                 return RedirectToAction("Index", "Home");
             }
 
