@@ -2,7 +2,6 @@
 using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using BoVoyageP4.Outils;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -62,38 +61,6 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                 return RedirectToAction("index", "TableauDeBord");
             }
 
-            return View(commercial);
-        }
-
-        // GET: BackOffice/Commercials/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Commercial commercial = db.Commercials.Find(id);
-            if (commercial == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commercial);
-        }
-
-        // POST: BackOffice/Commercials/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Login,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Commercial commercial)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(commercial).State = EntityState.Modified;
-                db.SaveChanges();
-                Display("Commercial modifié");
-                return RedirectToAction("Index");
-            }
             return View(commercial);
         }
 

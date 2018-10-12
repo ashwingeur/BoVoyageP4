@@ -252,7 +252,6 @@
     <Content Include="Areas\BackOffice\Views\Clients\Create.cshtml" />
     <Content Include="Areas\BackOffice\Views\Clients\Delete.cshtml" />
     <Content Include="Areas\BackOffice\Views\Clients\Details.cshtml" />
-    <Content Include="Areas\BackOffice\Views\Clients\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\Clients\Index.cshtml" />
     <Content Include="Areas\BackOffice\Views\Voyages\Create.cshtml" />
     <Content Include="Areas\BackOffice\Views\Voyages\Delete.cshtml" />
@@ -279,7 +278,6 @@
     <Content Include="Areas\BackOffice\Views\Commercials\Create.cshtml" />
     <Content Include="Areas\BackOffice\Views\Commercials\Delete.cshtml" />
     <Content Include="Areas\BackOffice\Views\Commercials\Details.cshtml" />
-    <Content Include="Areas\BackOffice\Views\Commercials\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\Commercials\Index.cshtml" />
     <Content Include="Areas\BackOffice\Views\FormulaireContacts\Create.cshtml" />
     <Content Include="Areas\BackOffice\Views\FormulaireContacts\Delete.cshtml" />

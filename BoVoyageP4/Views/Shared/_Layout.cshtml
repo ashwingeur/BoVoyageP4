@@ -32,14 +32,30 @@
                     <li>@Html.ActionLink("Contact", "Contact", "FormulaireContacts")</li>
                 </ul>
                 <ul class="nav navbar-right">
-                    <li>@Html.ActionLink("Inscription", "Subscribe", "Clients", new { @class = "btn btn-info" })</li>
+                    <li>@Html.ActionLink("Inscription", "Subscribe", "Clients")</li>
                 </ul>
                 <ul class="nav navbar-right">
-                    <li><a href="@Url.Action("index", "TableauDeBord", new { area="backoffice" })"class="btn btn-info">Espace Collaborateur</a></li>
+                    <li><a href="@Url.Action("index", "TableauDeBord", new { area="backoffice" })">Espace Collaborateur</a></li>
                 </ul>
                 @if (client == null)
                 {
-                    <li><a href="@Url.Action("Login","AuthentificationClient",new { area="" } )" class="btn btn-info">Se connecter</a></li>
+                    <!--
+
+                    GTM:Url.Action("login", "AuthentificationClient") dont work
+                    <form class="navbar-form navbar-right" method="post" action="@Url.Action("login", "AuthentificationClient")">
+                        <div class="form-group">
+                            <input type="text" name="Email" class="form-control" placeholder="Login">
+                            <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" />
+                        </div>
+                        <button type="submit" class="btn btn-info">OK</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("subscribe", "clients")">Inscription</a></li>
+                    </ul>
+                    -->
+
+                    <li><a href="@Url.Action("Login","AuthentificationClient",new { area="" } )">Se connecter</a></li>
+
                 }
                 else
                 {

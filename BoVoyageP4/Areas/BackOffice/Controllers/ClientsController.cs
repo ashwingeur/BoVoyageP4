@@ -147,40 +147,6 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
-        // GET: BackOffice/Clients/Edit/5
-        [Authentication]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
-            return View(client);
-        }
-
-        // POST: BackOffice/Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authentication]
-        public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(client).State = EntityState.Modified;
-                db.SaveChanges();
-                Display("Client modifié");
-                return RedirectToAction("Index");
-            }
-            return View(client);
-        }
-
         // GET: BackOffice/Clients/Delete/5
         [Authentication]
         public ActionResult Delete(int? id)
