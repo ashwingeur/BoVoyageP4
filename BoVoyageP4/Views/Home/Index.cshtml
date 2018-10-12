@@ -19,8 +19,9 @@
                         <p>@item.DateAller.ToString("ddd dd MMM yyyy ")</p>
                         <p>@item.DateRetour.ToString("ddd dd MMM yyyy ")</p>
 
-                        @Html.ActionLink("Reserver", "Reservation/" + @item.ID, "Reservation")
-                        @Html.ActionLink("Plus d'Infos", "Details/" + @item.ID, "Home")
+                        @Html.ActionLink("Reserver", "Reservation/" + @item.ID, "Reservation", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
+                        @Html.ActionLink("Plus d'Infos", "Details/" + @item.ID, "Home", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
+
                     </div>
                         </div>
                     </div>
