@@ -40,7 +40,7 @@ namespace BoVoyageP4.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Ajout([Bind(Include = "ID,IDDossierReservation,model[i].Civilite,model[i].Nom,model[i].Prenom,model[i].Adresse,model[i].Telephone,model[i].DateNaissance")] List<Participant> participants)
+        public ActionResult Ajout(List<Participant> participants)
         {
             if (participants != null)
             {
@@ -54,9 +54,10 @@ namespace BoVoyageP4.Controllers
                             db.Participants.Add(participant);
                             db.SaveChanges();
 
-                            var dossier = db.DossierReservations.Find(participant.IDDossierReservation);
+                            var dossier = db.DossierReservations.Include(x => x.Voyage).SingleOrDefault(x => x.ID == participant.IDDossierReservation);
                             dossier.Participants.Add(participant);
                             dossier.PrixTotal += dossier.PrixParPersonne * (decimal)participant.Reduction;
+                            dossier.Voyage.PlacesDisponibles--;
                             db.Entry(dossier).State = EntityState.Modified;
                             db.SaveChanges();
                         }

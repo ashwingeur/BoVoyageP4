@@ -62,56 +62,63 @@
 </div>
 
 <div>
-    @if (client != null)
+    @if (voyage.PlacesDisponibles > 0)
     {
-        using (Html.BeginForm())
+        if (client != null)
         {
-            @Html.AntiForgeryToken()
+            using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4>DossierReservation</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NumeroCarteBancaire, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NumeroCarteBancaire, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NumeroCarteBancaire, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+                    <h4>DossierReservation</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumeroCarteBancaire, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumeroCarteBancaire, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumeroCarteBancaire, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.Hidden("PrixParPersonne", voyage.PrixParPersonne)
+                    @Html.Hidden("PlacesDisponibles", voyage.PlacesDisponibles)
+                    @Html.Hidden("EtatDossierReservation", 0)
+                    @Html.Hidden("RaisonAnnulationDossier", 0)
+                    @Html.Hidden("PrixTotal", 0)
+
+                    @Html.Hidden("Voyage", voyage)
+                    @Html.Hidden("IDVoyage", voyage.ID)
+
+                    @Html.Hidden("Client", client)
+                    @Html.Hidden("IDClient", client.ID)
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label for="Participants">Combien de Participants?</label>
+                            <input type="number" id="Participants" name="nbParticipants"
+                                   step="1" min="1" max="@voyage.PlacesDisponibles" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Reserver" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
-
-                @Html.Hidden("PrixParPersonne", voyage.PrixParPersonne)
-                @Html.Hidden("PlacesDisponibles", voyage.PlacesDisponibles)
-                @Html.Hidden("EtatDossierReservation", 0)
-                @Html.Hidden("RaisonAnnulationDossier", 0)
-                @Html.Hidden("PrixTotal", 0)
-
-                @Html.Hidden("Voyage", voyage)
-                @Html.Hidden("IDVoyage", voyage.ID)
-
-                @Html.Hidden("Client", client)
-                @Html.Hidden("IDClient", client.ID)
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <label for="Participants">Combien de Participants?</label>
-                        <input type="number" id="Participants" name="nbParticipants"
-                                step="1" min="1" max="@voyage.PlacesDisponibles" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Reserver" class="btn btn-default" />
-                    </div>
-                </div>
+            }
+        }
+        else
+        {
+            <div class="alert-info">
+                Connectez-vous pour reserver!
             </div>
         }
     }
     else
     {
-        <div class="alert-info">
-            Connectez-vous pour reserver!
-        </div>
+        <p>Plus de place Disponibles</p>
     }
 </div>
