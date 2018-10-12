@@ -21,7 +21,7 @@ namespace BoVoyageP4.Helpers
             if (!string.IsNullOrWhiteSpace(cssClass))
                 photo.Attributes.Add("class", cssClass);
 
-            return MvcHtmlString.Create(image.ToString());
+            return MvcHtmlString.Create(photo.ToString());
         }
     }
 }
