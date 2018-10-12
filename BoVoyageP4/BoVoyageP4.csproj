@@ -343,6 +343,7 @@
     <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Reservation\Ajout.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Clients\EspacePersonnel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
