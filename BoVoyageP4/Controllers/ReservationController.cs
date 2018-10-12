@@ -29,6 +29,7 @@ namespace BoVoyageP4.Controllers
                 db.SaveChanges();
                 Session["IDDossier"] = dossierReservation.ID;
                 Session["Participants"] = nbParticipants;
+                Display("Demande en cours a votre banque...");
                 return RedirectToAction("Ajout");
             }
             ViewBag.Assurances = new SelectList(db.Assurances, "ID", "Nom", dossierReservation.Assurances);
