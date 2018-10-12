@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="navbar-default sidebar" role="navigation" style="background-color: #e3f2fd;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,6 +27,7 @@
                 @Html.ActionLink("Client", "Index", "Clients", new { area = "BackOffice" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Assurance", "Index", "Assurances", new { area = "BackOffice" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Commercial", "Index", "Commercials", new { area = "BackOffice" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Dossier de reservation", "Index", "DossierReservation", new { area = "BackOffice" }, new { @class = "navbar-brand" })
 
             </div>
             <div class="navbar-collapse collapse">

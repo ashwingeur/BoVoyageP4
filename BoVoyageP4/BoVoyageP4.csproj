@@ -293,6 +293,8 @@
     <Content Include="Areas\BackOffice\Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Areas\BackOffice\Views\Participants\Ajout.cshtml" />
     <Content Include="Areas\BackOffice\Views\Clients\Recherche.cshtml" />
+    <Content Include="fonts\Montserrat-Regular.ttf" />
+    <Content Include="fonts\Muli-Regular.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
