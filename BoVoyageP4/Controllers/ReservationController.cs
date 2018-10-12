@@ -61,6 +61,10 @@ namespace BoVoyageP4.Controllers
                             db.Entry(dossier).State = EntityState.Modified;
                             db.SaveChanges();
                         }
+                        else
+                        {
+                            return View(participant);
+                        }
                     }
                     return RedirectToAction("Index", "Home");
                 }
@@ -69,12 +73,15 @@ namespace BoVoyageP4.Controllers
                     var dossier = db.DossierReservations.Find(int.Parse(Session["IDDossier"].ToString()));
                     db.DossierReservations.Remove(dossier);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return View(participants);
                 }
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                var dossier = db.DossierReservations.Find(int.Parse(Session["IDDossier"].ToString()));
+                db.DossierReservations.Remove(dossier);
+                db.SaveChanges();
+                return View(participants);
             }
         }
     }
