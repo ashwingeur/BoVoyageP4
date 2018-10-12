@@ -19,7 +19,7 @@ namespace BoVoyageP4.Controllers
         public ActionResult Recherche(string Filter)
         {
             HomeIndexViewModel model = new HomeIndexViewModel();
-            model.Voyages = db.Voyages.Include(v => v.Destination).Where(x => x.Destination.Region.Contains(Filter)).ToList();
+            model.Voyages = db.Voyages.Include(v => v.Destination).Include(v => v.Images).Where(x => x.Destination.Region.Contains(Filter)).ToList();
 
             return View("Index", model);
         }
@@ -32,22 +32,22 @@ namespace BoVoyageP4.Controllers
             switch (ChampsTri)
             {
                 case "REGION":
-                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList();
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).Include(v => v.Images).ToList();
                     break;
                 case "DATEDEPART":
-                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateAller).ToList();
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateAller).Include(v => v.Images).ToList();
                     break;
                 case "DATERETOUR":
-                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateRetour).ToList();
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateRetour).Include(v => v.Images).ToList();
                     break;
                 case "PLACESDISPONIBLES":
-                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.PlacesDisponibles).ToList();
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.PlacesDisponibles).Include(v => v.Images).ToList();
                     break;
                 case "PRIX":
-                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.PrixParPersonne).ToList();
+                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.PrixParPersonne).Include(v => v.Images).ToList();
                     break;
                 default:
-                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList();
+                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).Include(v => v.Images).ToList();
                     break;
             }
             return View("Index", model);
