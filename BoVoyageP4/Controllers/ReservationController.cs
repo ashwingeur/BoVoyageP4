@@ -40,29 +40,42 @@ namespace BoVoyageP4.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Ajout([Bind(Include = "ID,IDDossierReservation,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] List<Participant> participants)
+        public ActionResult Ajout(List<Participant> participants)
         {
             if (participants != null)
             {
-                foreach (Participant participant in participants)
+                if (ModelState.IsValid)
                 {
-                    if (ModelState.IsValid)
+                    foreach (Participant participant in participants)
                     {
-                        participant.IDDossierReservation = int.Parse(Session["IDDossier"].ToString());
-                        db.Participants.Add(participant);
-                        db.SaveChanges();
+                        if (ModelState.IsValid)
+                        {
+                            participant.IDDossierReservation = int.Parse(Session["IDDossier"].ToString());
+                            db.Participants.Add(participant);
+                            db.SaveChanges();
 
-                        var dossier = db.DossierReservations.Find(participant.IDDossierReservation);
-                        dossier.Participants.Add(participant);
-                        dossier.PrixTotal += dossier.PrixParPersonne * (decimal)participant.Reduction;
-                        db.Entry(dossier).State = EntityState.Modified;
-                        db.SaveChanges();
+                            var dossier = db.DossierReservations.Include(x => x.Voyage).SingleOrDefault(x => x.ID == participant.IDDossierReservation);
+                            dossier.Participants.Add(participant);
+                            dossier.PrixTotal += dossier.PrixParPersonne * (decimal)participant.Reduction;
+                            dossier.Voyage.PlacesDisponibles--;
+                            db.Entry(dossier).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
                     }
+                    return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    var dossier = db.DossierReservations.Find(int.Parse(Session["IDDossier"].ToString()));
+                    db.DossierReservations.Remove(dossier);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
                 return RedirectToAction("Index", "Home");
             }
-
-            return View(participants);
         }
     }
 }
