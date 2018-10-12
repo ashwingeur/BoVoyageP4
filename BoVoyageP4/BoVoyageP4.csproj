@@ -210,6 +210,7 @@
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Personne.cs" />
+    <Compile Include="Models\TableauDeBord.cs" />
     <Compile Include="Models\Voyage.cs" />
     <Compile Include="Models\VoyageImage.cs" />
     <Compile Include="Outils\Message.cs" />
