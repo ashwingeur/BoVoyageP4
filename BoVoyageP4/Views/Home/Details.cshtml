@@ -28,7 +28,10 @@
         </div>
     </div>
     <p><a class="btn btn-primary btn-lg" href="#" role="button">Reserver</a></p>
+    <p>@Html.ActionLink("Retour à la liste", "Index")</p>
+    @Html.ActionLink("Reserver", "Reservation/" + @item.ID, "Reservation")
+    <p>@Html.ActionLink("Reserver", "Reserver")</p>
 </div>
 <p>
-    @Html.ActionLink("Retour à la liste", "Index")
+    
 </p>
