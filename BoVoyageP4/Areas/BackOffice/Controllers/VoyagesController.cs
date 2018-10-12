@@ -2,6 +2,7 @@
 using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
 using BoVoyageP4.Outils;
+using System;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -82,7 +83,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,DateAller,DateRetour,PlacesDisponibles,PrixParPersonne,IDDestination,IDAgenceVoyage")] Voyage voyage)
         {
-            if (voyage.DateRetour <= voyage.DateAller)
+            if ((voyage.DateRetour <= voyage.DateAller) || (voyage.DateAller< DateTime.Now))
             {
                 Display("Attention verifiez vos dates!", MessageType.ERROR);
             }
@@ -129,10 +130,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         {
             db.Voyages.Include("Images"); ;
 
-
-
-
-            if (voyage.DateRetour <= voyage.DateAller)
+            if ((voyage.DateRetour <= voyage.DateAller) || (voyage.DateAller < DateTime.Now))
             {
                 Display("Attention verifiez vos dates!", MessageType.ERROR);
             }
