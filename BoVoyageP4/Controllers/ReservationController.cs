@@ -12,22 +12,25 @@ namespace BoVoyageP4.Controllers
         public ActionResult Reservation(int id)
         {
             Session["Voyage"] = db.Voyages.Include(x => x.AgenceVoyage).Include(x => x.Destination).SingleOrDefault(x => x.ID == id);
+            ViewBag.Assurances = new SelectList(db.Assurances, "ID", "Montant");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reservation([Bind(Include = "ID,NumeroCarteBancaire,PrixParPersonne,EtatDossierReservation,RaisonAnnulationDossier,PrixTotal,IDVoyage,IDClient")] DossierReservation dossierReservation, int? nbParticipants)
+        public ActionResult Reservation([Bind(Include = "ID,NumeroCarteBancaire,PrixParPersonne,EtatDossierReservation,RaisonAnnulationDossier,PrixTotal,IDVoyage,IDClient")] DossierReservation dossierReservation, Assurance Assurance, int? nbParticipants)
         {
             if (ModelState.IsValid)
             {
+                dossierReservation.Assurances = new List<Assurance>();
+                dossierReservation.Assurances.Add(Assurance);
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
                 Session["IDDossier"] = dossierReservation.ID;
                 Session["Participants"] = nbParticipants;
                 return RedirectToAction("Ajout");
             }
-
+            ViewBag.Assurances = new SelectList(db.Assurances, "ID", "Nom", dossierReservation.Assurances);
             ViewBag.IDClient = new SelectList(db.Clients, "ID", "Email", dossierReservation.IDClient);
             ViewBag.IDVoyage = new SelectList(db.Voyages, "ID", "ID", dossierReservation.IDVoyage);
             return View(dossierReservation);
@@ -54,7 +57,7 @@ namespace BoVoyageP4.Controllers
                             db.Participants.Add(participant);
                             db.SaveChanges();
 
-                            var dossier = db.DossierReservations.Include(x => x.Voyage).SingleOrDefault(x => x.ID == participant.IDDossierReservation);
+                            var dossier = db.DossierReservations.Include(x => x.Assurances).Include(x => x.Voyage).SingleOrDefault(x => x.ID == participant.IDDossierReservation);
                             dossier.Participants.Add(participant);
                             dossier.PrixTotal += dossier.PrixParPersonne * (decimal)participant.Reduction;
                             dossier.Voyage.PlacesDisponibles--;
