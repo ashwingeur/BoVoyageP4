@@ -13,8 +13,7 @@ namespace BoVoyageP4.Controllers
             ViewData["Title"] = "Accueil";
 
             HomeIndexViewModel model = new HomeIndexViewModel();
-            model.Voyages = db.Voyages.Include(v => v.Destination);
-                                         
+            model.Voyages = db.Voyages.Include(v => v.Destination).Include(v => v.Images);
             return View(model);
         }
 
