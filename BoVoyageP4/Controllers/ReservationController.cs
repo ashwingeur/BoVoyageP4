@@ -11,7 +11,7 @@ namespace BoVoyageP4.Controllers
         // GET: Reservation
         public ActionResult Reservation(int id)
         {
-            TempData["Voyage"] = db.Voyages.Include(x => x.AgenceVoyage).Include(x => x.Destination).SingleOrDefault(x => x.ID == id);
+            Session["Voyage"] = db.Voyages.Include(x => x.AgenceVoyage).Include(x => x.Destination).SingleOrDefault(x => x.ID == id);
             return View();
         }
 
@@ -23,8 +23,8 @@ namespace BoVoyageP4.Controllers
             {
                 db.DossierReservations.Add(dossierReservation);
                 db.SaveChanges();
-                TempData["IDDossier"] = dossierReservation.ID;
-                TempData["Participants"] = nbParticipants;
+                Session["IDDossier"] = dossierReservation.ID;
+                Session["Participants"] = nbParticipants;
                 return RedirectToAction("Ajout");
             }
 
@@ -35,8 +35,6 @@ namespace BoVoyageP4.Controllers
 
         public ActionResult Ajout()
         {
-            TempData["Participants"] = TempData["Participants"];
-            TempData["IDDossier"] = TempData["IDDossier"];
             return View();
         }
 
@@ -47,8 +45,10 @@ namespace BoVoyageP4.Controllers
             if (participants != null)
             {
                 foreach (Participant participant in participants)
+                {
                     if (ModelState.IsValid)
                     {
+                        participant.IDDossierReservation = int.Parse(Session["IDDossier"].ToString());
                         db.Participants.Add(participant);
                         db.SaveChanges();
 
@@ -56,10 +56,10 @@ namespace BoVoyageP4.Controllers
                         dossier.Participants.Add(participant);
                         db.Entry(dossier).State = EntityState.Modified;
                         db.SaveChanges();
-                        return RedirectToAction("Index");
                     }
+                }
+                return RedirectToAction("Index", "Home");
             }
-            TempData["IDDossier"] = TempData["IDDossier"];
 
             return View(participants);
         }

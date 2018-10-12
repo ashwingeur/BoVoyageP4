@@ -63,7 +63,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 
         public ActionResult Ajout()
         {
-            TempData["IDDossier"] = TempData["IDDossier"];
+            Session["IDDossier"] = TempData["IDDossier"];
             return View();
         }
 
