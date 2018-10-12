@@ -14,7 +14,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // GET: BackOffice/DossierReservations
         public ActionResult Index()
         {
-            var dossierReservations = db.DossierReservations.Include(d => d.Client).Include(d => d.Voyage);
+            var dossierReservations = db.DossierReservations.Include(d => d.Client).Include(d => d.Voyage).Include(p => p.Participants);
             return View(dossierReservations.ToList());
         }
 
