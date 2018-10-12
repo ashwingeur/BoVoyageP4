@@ -210,6 +210,7 @@
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Personne.cs" />
+    <Compile Include="Models\TableauDeBord.cs" />
     <Compile Include="Models\Voyage.cs" />
     <Compile Include="Models\VoyageImage.cs" />
     <Compile Include="Outils\Message.cs" />
@@ -325,15 +326,16 @@
     </Content>
     <Content Include="Views\Clients\Subscribe.cshtml" />
     <Content Include="Views\Clients\Login.cshtml" />
-    <Content Include="Views\Home\DetailVoyage.cshtml" />
     <Content Include="Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Reservation\Ajout.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\VoyageDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,5 +1,6 @@
 ﻿@model BoVoyageP4.Models.Voyage
 @using BoVoyageP4.Helpers;
+
 @{
     ViewBag.Title = "Modifier";
 }
@@ -90,10 +91,10 @@
         {
             foreach (var image in Model.Images)
             {
-                <div class="col-md-3" id="div-@image.ID">
-                    <p>@image <a href="#" class="delete" data-id="@image"><i class="glyphicon glyphicon-trash"></i></a></p>
-                    @Html.VoyageImage(image, "img-thumbnail")
-                </div>
+        <div class="col-md-3" id="div-@image.ID">
+            <p>@image.Name <a href="#" class="delete" data-id="@image.ID"><i class="glyphicon glyphicon-trash"></i></a></p>
+            @Html.VoyageImage(image, "img-thumbnail")
+        </div>
             }
         }
 
