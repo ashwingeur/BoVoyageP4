@@ -54,6 +54,7 @@ namespace BoVoyageP4.Controllers
 
                         var dossier = db.DossierReservations.Find(participant.IDDossierReservation);
                         dossier.Participants.Add(participant);
+                        dossier.PrixTotal += dossier.PrixParPersonne * (decimal)participant.Reduction;
                         db.Entry(dossier).State = EntityState.Modified;
                         db.SaveChanges();
                     }
