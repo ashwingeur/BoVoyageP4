@@ -20,6 +20,37 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(voyages.ToList());
         }
 
+        [Authentication]
+        public ActionResult Recherche(string Filter)
+        {
+            return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).Where(x => x.Destination.Region.Contains(Filter)).ToList());
+        }
+
+        [Authentication]
+        public ActionResult Tri(string ChampsTri)
+        {
+            Display("Tri validé");
+
+            switch (ChampsTri)
+            {
+                case "AGENCE":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.AgenceVoyage.Nom).ToList());
+                case "REGION":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList());
+                case "DATEDEPART":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.DateAller).ToList());
+                case "DATERETOUR":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.DateRetour).ToList());
+                case "PLACESDISPONIBLES":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.PlacesDisponibles).ToList());
+                case "PRIX":
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.PrixParPersonne).ToList());
+                default:
+                    return View("Index", db.Voyages.Include(v => v.AgenceVoyage).Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList());
+            }
+
+        }
+
         // GET: BackOffice/Voyages/Details/5
         public ActionResult Details(int? id)
         {

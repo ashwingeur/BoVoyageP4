@@ -16,6 +16,45 @@ namespace BoVoyageP4.Controllers
             return View(model);
         }
 
+        public ActionResult Recherche(string Filter)
+        {
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.Voyages = db.Voyages.Include(v => v.Destination).Where(x => x.Destination.Region.Contains(Filter)).ToList();
+
+            return View("Index", model);
+        }
+
+        public ActionResult Tri(string ChampsTri)
+        {
+            Display("Tri validé");
+            HomeIndexViewModel model = new HomeIndexViewModel();
+
+            switch (ChampsTri)
+            {
+                case "REGION":
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList();
+                    break;
+                case "DATEDEPART":
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateAller).ToList();
+                    break;
+                case "DATERETOUR":
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.DateRetour).ToList();
+                    break;
+                case "PLACESDISPONIBLES":
+                    model.Voyages=db.Voyages.Include(v => v.Destination).OrderBy(x => x.PlacesDisponibles).ToList();
+                    break;
+                case "PRIX":
+                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.PrixParPersonne).ToList();
+                    break;
+                default:
+                    model.Voyages = db.Voyages.Include(v => v.Destination).OrderBy(x => x.Destination.Region).ToList();
+                    break;
+            }
+            return View("Index", model);
+
+        }
+
+
         // GET: Voyages/Details/5
         public ActionResult Details(int? id)
         {
