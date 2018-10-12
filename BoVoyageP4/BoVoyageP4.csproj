@@ -482,7 +482,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\FormulaireContacts\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="ConnectionStrings.Debug.config">
       <DependentUpon>ConnectionStrings.config</DependentUpon>

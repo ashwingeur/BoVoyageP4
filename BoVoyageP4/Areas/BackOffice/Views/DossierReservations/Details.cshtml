@@ -9,7 +9,7 @@
 <div>
     <h4>DossierReservation</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="">
         <dt>
             @Html.DisplayNameFor(model => model.Client.Email)
         </dt>
@@ -69,9 +69,9 @@
         {
             foreach (var part in Model.Participants)
             {
-                <p>
+                <div class="container breadcrumb col-md-6" style="border:1px solid black">
                     @part.Civilite @part.Prenom @part.Nom : @part.Age Ans
-                </p>
+                </div>
             }
         }
         else
