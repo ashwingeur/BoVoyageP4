@@ -1,6 +1,7 @@
 ﻿using BoVoyageP4.Controllers;
 using BoVoyageP4.Filters;
 using BoVoyageP4.Models;
+using BoVoyageP4.Outils;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -81,14 +82,20 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,DateAller,DateRetour,PlacesDisponibles,PrixParPersonne,IDDestination,IDAgenceVoyage")] Voyage voyage)
         {
-            if (ModelState.IsValid)
+            if (voyage.DateRetour <= voyage.DateAller)
             {
-                db.Voyages.Add(voyage);
-                db.SaveChanges();
-                Display("Voyage crée");
-                return RedirectToAction("Index");
+                Display("Attention verifiez vos dates!", MessageType.ERROR);
             }
-
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Voyages.Add(voyage);
+                    db.SaveChanges();
+                    Display("Voyage crée");
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag.IDAgenceVoyage = new SelectList(db.AgencesVoyages, "ID", "Nom", voyage.IDAgenceVoyage);
             ViewBag.IDDestination = new SelectList(db.Destinations, "ID", "Continent", voyage.IDDestination);
             return View(voyage);
@@ -102,7 +109,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Voyage voyage = db.Voyages.Include("Images").SingleOrDefault(x => x.ID == id); 
+            Voyage voyage = db.Voyages.Include("Images").SingleOrDefault(x => x.ID == id);
 
             if (voyage == null)
             {
@@ -121,13 +128,25 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         public ActionResult Edit([Bind(Include = "ID,DateAller,DateRetour,PlacesDisponibles,PrixParPersonne,IDDestination,IDAgenceVoyage,Images")] Voyage voyage)
         {
             db.Voyages.Include("Images"); ;
-            if (ModelState.IsValid)
+
+
+
+
+            if (voyage.DateRetour <= voyage.DateAller)
             {
-                db.Entry(voyage).State = EntityState.Modified;
-                db.SaveChanges();
-                Display("Voyage modifié");
-                return RedirectToAction("Index");
+                Display("Attention verifiez vos dates!", MessageType.ERROR);
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(voyage).State = EntityState.Modified;
+                    db.SaveChanges();
+                    Display("Voyage modifié");
+                    return RedirectToAction("Index");
+                }
+            }
+            
             ViewBag.IDAgenceVoyage = new SelectList(db.AgencesVoyages, "ID", "Nom", voyage.IDAgenceVoyage);
             ViewBag.IDDestination = new SelectList(db.Destinations, "ID", "Continent", voyage.IDDestination);
             return View(voyage);
