@@ -47,11 +47,6 @@ namespace BoVoyageP4.Controllers
             return View(modelInfo);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Votre page de contact";
-
-            return View();
-        }
+       
     }
 }

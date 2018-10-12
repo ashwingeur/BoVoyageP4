@@ -8,16 +8,18 @@ using System.Web.Mvc;
 
 namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
-    [Authentication]
+    
     public class FormulaireContactsController : BaseController
     {
         // GET: BackOffice/FormulaireContacts
+        [Authentication]
         public ActionResult Index()
         {
             return View(db.FormulaireContacts.ToList());
         }
 
         // GET: BackOffice/FormulaireContacts/Details/5
+        [Authentication]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -33,6 +35,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // GET: BackOffice/FormulaireContacts/Create
+        [Authentication]
         public ActionResult Create()
         {
             return View();
@@ -42,6 +45,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authentication]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Email,Telephone,Question")] FormulaireContact formulaireContact)
         {
@@ -49,13 +53,34 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.FormulaireContacts.Add(formulaireContact);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
+            }
+
+            return View(formulaireContact);
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("~Views/FormulaireContact/Contact")]
+        public ActionResult Contact([Bind(Include = "ID,Email,Telephone,Question")] FormulaireContact formulaireContact)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FormulaireContacts.Add(formulaireContact);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
 
             return View(formulaireContact);
         }
 
         // GET: BackOffice/FormulaireContacts/Edit/5
+        [Authentication]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,6 +99,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authentication]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Email,Telephone,Question")] FormulaireContact formulaireContact)
         {
@@ -87,6 +113,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // GET: BackOffice/FormulaireContacts/Delete/5
+        [Authentication]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -102,6 +129,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // POST: BackOffice/FormulaireContacts/Delete/5
+        [Authentication]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
