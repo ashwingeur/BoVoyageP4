@@ -20,6 +20,12 @@ namespace BoVoyageP4
             );
 
             routes.MapRoute(
+                name: "DetailsVoyage",
+                url: "Voyage-{pays}/{id}",
+                defaults: new { controller = "Home", action = "Details" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
