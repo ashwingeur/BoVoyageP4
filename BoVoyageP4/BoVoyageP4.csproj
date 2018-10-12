@@ -329,11 +329,13 @@
     <Content Include="Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Views\Reservation\Reservation.cshtml" />
     <Content Include="Views\Reservation\Ajout.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\VoyageDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

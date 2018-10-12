@@ -1,0 +1,34 @@
+﻿@model BoVoyageP4.Models.Voyage
+@using BoVoyageP4.Helpers;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="jumbotron">
+    <h1>@Model.AgenceVoyage</h1>
+    <h1>@Model.Destination.Continent</h1>
+    <h1>@Model.Destination.Pays</h1>
+    <h1>@Model.Destination.Region</h1>
+    <p>@Model.DateAller €</p>
+    <p>@Model.DateRetour</p>
+    <p>@Html.Raw(Model.Destination.Description)</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                @foreach (var picture in Model.Images)
+                {
+                    <div class="col-xs-6 col-md-3 thumbnail">
+                        @Html.VoyageImage(picture)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Reserver</a></p>
+</div>
+<p>
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

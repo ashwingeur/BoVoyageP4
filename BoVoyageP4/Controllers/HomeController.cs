@@ -11,13 +11,31 @@ namespace BoVoyageP4.Controllers
         public ActionResult Index()
         {
             ViewData["Title"] = "Accueil";
-
             HomeIndexViewModel model = new HomeIndexViewModel();
             model.Voyages = db.Voyages.Include(v => v.Destination).Include(v => v.Images);
             return View(model);
         }
 
-        //[Route("a-propos")]
+        // GET: Voyages/Details/5
+        public ActionResult Details(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //Voyage voyage = db.Voyages.Find(id).Include(v => v.Destination).Include(v => v.Images);
+            var voyage = db.Voyages.Include("Destination")
+                                 .Include("Images")
+                                 .SingleOrDefault(x => x.ID == id);
+
+            if (voyage == null)
+            {
+                return HttpNotFound();
+            }
+            return View(voyage);
+        }
+
         public ActionResult About()
         {
             var modelInfo = new Info
