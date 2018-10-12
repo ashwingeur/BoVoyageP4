@@ -108,7 +108,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AgenceVoyage agenceVoyage = db.AgencesVoyages.SingleOrDefault(x => x.ID == id);
+            AgenceVoyage agenceVoyage = db.AgencesVoyages.Include(x => x.Voyages).SingleOrDefault(x => x.ID == id);
             if (agenceVoyage.Voyages != null)
             {
                 db.AgencesVoyages.Remove(agenceVoyage);
