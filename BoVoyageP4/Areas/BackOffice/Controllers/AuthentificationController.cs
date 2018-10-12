@@ -41,6 +41,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         public ActionResult Logout()
         {
             Session.Remove("COMMERCIAL");
+            Display("Déconnecté");
             return RedirectToAction("index", "home", new { area = "" });
         }
     }
