@@ -11,21 +11,24 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 {
     public class ClientsController : BaseController
     {
-        //[Authentication]
+        [Authentication]
         // GET: BackOffice/Clients
         public ActionResult Index()
         {
-            //  return View(db.Clients.ToList());
             return View(db.Clients.OrderBy(x => x.Nom).ToList());
         }
 
+        [Authentication]
         public ActionResult Recherche(string Filter)
         {
             return View("Index", db.Clients.Where(x => x.Nom.Contains(Filter)).ToList());
         }
 
+        [Authentication]
         public ActionResult Tri(string ChampsTri)
         {
+            Display("Tri validé");
+
             switch (ChampsTri)
             {
                 case "NOM":
@@ -36,6 +39,8 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
                     return View("Index", db.Clients.OrderBy(x => x.DateNaissance).ToList());
                 case "EMAIL":
                     return View("Index", db.Clients.OrderBy(x => x.Email).ToList());
+                case "ORDREINSCRIPTION":
+                    return View("Index", db.Clients.ToList());
                 default:
                     return View("Index", db.Clients.OrderBy(x => x.Nom).ToList());
             }
@@ -43,7 +48,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
 
-        //[Authentication]
+        [Authentication]
         // GET: BackOffice/Clients/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,25 +64,26 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             return View(client);
         }
 
-       // [Authentication]
         // GET: BackOffice/Clients/Create
+        [Authentication]
         public ActionResult Create()
         {
             return View();
         }
 
-        //[Authentication]
         // POST: BackOffice/Clients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
+        [Authentication]
+        public ActionResult Create([Bind(Include = "ID,Email,MotDePasse,MotDePasseVerification,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
         {
             if (ModelState.IsValid)
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
+                Display("Client enregistré");
                 return RedirectToAction("Index");
             }
 
@@ -113,6 +119,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         }
 
         // GET: BackOffice/Clients/Edit/5
+        [Authentication]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -129,9 +136,9 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
         // POST: BackOffice/Clients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authentication(Type = "CLIENT")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authentication]
         public ActionResult Edit([Bind(Include = "ID,Email,MotDePasse,Civilite,Nom,Prenom,Adresse,Telephone,DateNaissance")] Client client)
         {
             if (ModelState.IsValid)

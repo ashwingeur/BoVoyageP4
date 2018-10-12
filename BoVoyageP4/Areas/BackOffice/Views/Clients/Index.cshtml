@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    <a href="@Url.Action("subscribe", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
+    <a href="@Url.Action("Create", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
 </p>
 <form action="@Url.Action("Recherche", "Clients")" id="Recherche" method="get" enctype="multipart/form-data">
     <ul class="nav navbar-nav">
@@ -25,6 +25,7 @@
             <li>CIVILITE: @Html.RadioButton("ChampsTri", "CIVILITE")</li>
             <li>EMAIL: @Html.RadioButton("ChampsTri", "EMAIL")</li>
             <li>DATE DE NAISSANCE: @Html.RadioButton("ChampsTri", "DATEDENAISSANCE")</li>
+            <li>Par Ordre d'inscription: @Html.RadioButton("ChampsTri", "ORDREINSCRIPTION")</li>
         </ul>
         <input type="submit" value="GO" />
     </form>
