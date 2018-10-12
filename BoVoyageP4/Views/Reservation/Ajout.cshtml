@@ -14,8 +14,6 @@
         @Html.AntiForgeryToken()
         for (int i = 0; i < nbp; i++)
         {
-            var participant = new BoVoyageP4.Models.Participant();
-
             <div class="form-group">
                 @Html.LabelFor(model => model[i].Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
