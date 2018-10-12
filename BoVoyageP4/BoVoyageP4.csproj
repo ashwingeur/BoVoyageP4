@@ -292,9 +292,6 @@
     <Content Include="Areas\BackOffice\Views\TableauDeBord\Index.cshtml" />
     <Content Include="Areas\BackOffice\Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Areas\BackOffice\Views\Participants\Ajout.cshtml" />
-    <Content Include="Areas\BackOffice\Views\Clients\Recherche.cshtml" />
-    <Content Include="fonts\Montserrat-Regular.ttf" />
-    <Content Include="fonts\Muli-Regular.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -331,11 +328,14 @@
     <Content Include="Views\Home\DetailVoyage.cshtml" />
     <Content Include="Views\Shared\_PartialDisplay.cshtml" />
     <Content Include="Views\Reservation\Reservation.cshtml" />
+    <Content Include="Views\Reservation\Ajout.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\BackOffice\Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\VoyageDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

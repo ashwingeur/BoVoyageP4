@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav"></ul>
                 <ul class="nav navbar-nav navbar-right" style="color:red">
                     <li>
-                        <p>Bonjour @admin.Prenom @admin.Nom</p>
+                        <p class = "navbar-brand">Bonjour @admin.Prenom @admin.Nom </p>
                     </li>
                     <li>
                         <a id="logout" href="@Url.Action("Logout", "authentification")"><i class="glyphicon glyphicon-log-out"></i></a>
@@ -49,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - BoVoyage</p>
         </footer>
     </div>
 

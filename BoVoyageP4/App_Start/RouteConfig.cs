@@ -14,11 +14,10 @@ namespace BoVoyageP4
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-            name: "TableauDeBord",
-            url: "BO",
-             defaults: new { controller = "TableauDeBord", action = "Index" }
-             );
-
+                name: "AboutRoute",
+                url: "a-propos-de",
+                defaults: new { controller = "Home", action = "About" }
+            );
 
             routes.MapRoute(
                 name: "Default",

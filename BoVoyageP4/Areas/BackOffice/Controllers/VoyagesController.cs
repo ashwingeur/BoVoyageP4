@@ -54,6 +54,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Voyages.Add(voyage);
                 db.SaveChanges();
+                Display("Voyage crée");
                 return RedirectToAction("Index");
             }
 
@@ -93,6 +94,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             {
                 db.Entry(voyage).State = EntityState.Modified;
                 db.SaveChanges();
+                Display("Voyage modifié");
                 return RedirectToAction("Index");
             }
             ViewBag.IDAgenceVoyage = new SelectList(db.AgencesVoyages, "ID", "Nom", voyage.IDAgenceVoyage);
@@ -123,6 +125,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
             Voyage voyage = db.Voyages.Find(id);
             db.Voyages.Remove(voyage);
             db.SaveChanges();
+            Display("Voyage supprimé");
             return RedirectToAction("Index");
         }
 
@@ -143,7 +146,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 
                 db.VoyageImages.Add(img);
                 db.SaveChanges();
-
+                Display("Image ajoutée");
                 return RedirectToAction("edit", "voyages", new { id });
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -162,6 +165,7 @@ namespace BoVoyageP4.Areas.BackOffice.Controllers
 
             db.VoyageImages.Remove(image);
             db.SaveChanges();
+            Display("Image supprimée");
             return Json(image);
         }
     }

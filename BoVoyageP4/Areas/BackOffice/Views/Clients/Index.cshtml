@@ -1,18 +1,35 @@
 ﻿@model IEnumerable<BoVoyageP4.Models.Client>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestion des Clients";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    <a href="@Url.Action("subscribe", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
+    <a href="@Url.Action("Create", "Clients")" class="btn btn-primary" role="button">Nouveau client</a>
 </p>
-<p>
-    <a href="@Url.Action("Recherche", "Clients")" class="btn btn-primary" role="button">Recherche avancée</a>
-</p>
+<form action="@Url.Action("Recherche", "Clients")" id="Recherche" method="get" enctype="multipart/form-data">
+    <ul class="nav navbar-nav">
+        <li> <input type="text" class="form-control" id="Recherche" name="Filter" placeholder="Recherche par nom"></li>
+        <li><button type="submit" class="btn btn-info">Chercher</button></li>
+    </ul>
+</form>
 
+
+<div class="text-primary">
+    <form action="@Url.Action("Tri", "Clients")" id="Tri" method="get" enctype="multipart/form-data">
+        <ul class="nav navbar-nav">
+            <li>TRIER PAR   :   </li>
+            <li>NOM:   @Html.RadioButton("ChampsTri", "NOM")</li>
+            <li>CIVILITE: @Html.RadioButton("ChampsTri", "CIVILITE")</li>
+            <li>EMAIL: @Html.RadioButton("ChampsTri", "EMAIL")</li>
+            <li>DATE DE NAISSANCE: @Html.RadioButton("ChampsTri", "DATEDENAISSANCE")</li>
+            <li>Par Ordre d'inscription: @Html.RadioButton("ChampsTri", "ORDREINSCRIPTION")</li>
+        </ul>
+        <input type="submit" value="GO" />
+    </form>
+</div>
 
 <table class="table">
     <tr>
@@ -43,38 +60,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MotDePasse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Civilite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prenom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telephone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateNaissance)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotDePasse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Civilite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+                <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+                <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>

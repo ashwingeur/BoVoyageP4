@@ -17,12 +17,13 @@
                         <h3>@item.Destination.</h3>
                         <p>@item.PrixParPersonne</p>
                         <p>@item.DateAller.ToString("ddd dd MMM yyyy ")</p>
+                        <p>@item.DateRetour.ToString("ddd dd MMM yyyy ")</p>
 
                         @Html.ActionLink("Reserver", "Reservation/" + @item.ID, "Reservation")
-                        @*<p><a href="@Url.RouteUrl("DetailsVoyage", new { id=item.ID, name = item.Name })" class="btn btn-primary" role="button">Voir les détails</a> <a href="@Url.Action("", "clients", new { voyageId = item.ID })" class="btn btn-primary" role="button">S'inscrire</a></p>*@
+                        @Html.ActionLink("Plus d'Infos", "Details/" + @item.ID, "Home")
                     </div>
-                </div>
-            </div>
-        }
-    }
-</div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>

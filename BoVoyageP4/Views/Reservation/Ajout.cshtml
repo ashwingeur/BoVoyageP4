@@ -1,0 +1,75 @@
+﻿@model List<BoVoyageP4.Models.Participant>
+
+@{
+    ViewBag.Title = "Ajout d'un participant";
+    var nbp = int.Parse(Session["Participants"].ToString());
+}
+
+<h2>Ajout</h2>
+@if (nbp > 0)
+{
+
+    using (Html.BeginForm("Ajout", "Reservation", "POST"))
+    {
+        @Html.AntiForgeryToken()
+        for (int i = 0; i < nbp; i++)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].Civilite, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].Civilite, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Civilite, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].Nom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Nom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Prenom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Adresse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].DateNaissance, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].DateNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].DateNaissance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>

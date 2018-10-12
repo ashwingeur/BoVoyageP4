@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<BoVoyageP4.Models.FormulaireContact>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestion Formulaires";
 }
 
-<h2>Index</h2>
+<h2>ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "FormulaireContacts")" class="btn btn-primary" role="button">Nouveau Formulaire Contact</a>
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Question)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a href="@Url.Action("Edit", new { id=item.ID })"><i class="glyphicon glyphicon-edit text-warning"></i></a>
+            <a href="@Url.Action("Details", new { id=item.ID })"><i class="glyphicon glyphicon-search"></i></a>
+            <a href="@Url.Action("Delete", new { id=item.ID })"><i class="glyphicon glyphicon-trash"></i></a>
         </td>
     </tr>
 }
