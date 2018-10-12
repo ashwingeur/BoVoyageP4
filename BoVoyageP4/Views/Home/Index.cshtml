@@ -1,6 +1,26 @@
 ﻿@model BoVoyageP4.Models.HomeIndexViewModel
 @using BoVoyageP4.Helpers;
 
+
+<form action="@Url.Action("Recherche", "Home")" id="Recherche" method="get" enctype="multipart/form-data">
+    <ul class="nav navbar-nav">
+        <li> <input type="text" class="form-control" id="Recherche" name="Filter" placeholder="Recherche par Region"></li>
+        <li><button type="submit" class="btn btn-info">Chercher</button></li>
+    </ul>
+</form>
+
+<div class="text-primary">
+    <form action="@Url.Action("Tri", "Home")" id="Tri" method="get" enctype="multipart/form-data">
+        <ul class="nav navbar-nav">
+            <li>TRIER PAR   :   </li>
+            <li>REGION:   @Html.RadioButton("ChampsTri", "REGION")</li>
+            <li>DATE DE DEPART: @Html.RadioButton("ChampsTri", "DATEDEPART")</li>
+            <li>DATE DE RETOUR: @Html.RadioButton("ChampsTri", "DATERETOUR")</li>
+            <li>PRIX: @Html.RadioButton("ChampsTri", "PRIX")</li>
+        </ul>
+        <input type="submit" value="GO" />
+    </form>
+</div>
 <div class="row">
 
     @if (Model.Voyages != null)
@@ -23,8 +43,8 @@
                         @Html.ActionLink("Plus d'Infos", "Details/" + @item.ID, "Home", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
 
                     </div>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
+                </div>
+            </div>
+        }
+    }
+</div>

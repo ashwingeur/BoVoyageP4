@@ -9,13 +9,36 @@
 <p>
     <a href="@Url.Action("Create", "Voyages")" class="btn btn-primary" role="button">Nouveau Voyage</a>
 </p>
+
+<form action="@Url.Action("Recherche", "Voyages")" id="Recherche" method="get" enctype="multipart/form-data">
+    <ul class="nav navbar-nav">
+        <li> <input type="text" class="form-control" id="Recherche" name="Filter" placeholder="Recherche par Region"></li>
+        <li><button type="submit" class="btn btn-info">Chercher</button></li>
+    </ul>
+</form>
+
+<div class="text-primary">
+    <form action="@Url.Action("Tri", "Voyages")" id="Tri" method="get" enctype="multipart/form-data">
+        <ul class="nav navbar-nav">
+            <li>TRIER PAR   :   </li>
+            <li>REGION:   @Html.RadioButton("ChampsTri", "REGION")</li>
+            <li>AGENCE:   @Html.RadioButton("ChampsTri", "AGENCE")</li>
+            <li>DATE DE DEPART: @Html.RadioButton("ChampsTri", "DATEDEPART")</li>
+            <li>DATE DE RETOUR: @Html.RadioButton("ChampsTri", "DATERETOUR")</li>
+            <li>PLACES DISPONIBLES: @Html.RadioButton("ChampsTri", "PLACESDISPONIBLES")</li>
+            <li>PRIX: @Html.RadioButton("ChampsTri", "PRIX")</li>
+        </ul>
+        <input type="submit" value="GO" />
+    </form>
+</div>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AgenceVoyage.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Destination.Continent)
+            @Html.DisplayNameFor(model => model.Destination.Region)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateAller)
@@ -38,7 +61,7 @@
             @Html.DisplayFor(modelItem => item.AgenceVoyage.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Destination.Continent)
+            @Html.DisplayFor(modelItem => item.Destination.Region)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateAller)
