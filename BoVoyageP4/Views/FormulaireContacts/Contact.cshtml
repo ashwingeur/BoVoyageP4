@@ -2,50 +2,102 @@
 
 
 
+@{
+
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/contact.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/contact_responsive.css")>
+</head>
+
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+
+                <!-- Get in touch -->
+                <div class="col-lg-6">
+                    <div class="contact_content">
+                        <div class="contact_title">Contact </div>
+
+                        <div class="contact_list">
+                            <ul>
+                                <li>
+                                    <div>addresse:</div>
+                                    <div>Villa Lourcine , Paris 14</div>
+                                </li>
+                                <li>
+                                    <div>phone:</div>
+                                    <div>01 30 20 10 15 </div>
+                                </li>
+                                <li>
+                                    <div>email:</div>
+                                    <div>TeamGTM@gmail.com</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+                <div class="col-lg-6">
+                    <div class="contact_form_container">
 
-    <div class="form-horizontal">
-        <h4>Contact</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="row">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        
+                                <div class="col-lg-6" style="margin-bottom: 18px">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="contact_input contact_input_email inpt">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Envoyé" class="btn btn-default" />
+                                <div class="col-lg-6" style="margin-bottom: 18px">
+                                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Envoyé" class="btn btn-default" />
+                                </div>
+                            </div>
+
+
+                        }
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
+    <div>
 
-<div>
-    @Html.ActionLink("Retour à la liste", "Index")
-</div>
+        @Html.ActionLink("Retour à la liste", "Index")
+    </div>
+
+    <script src=@Url.Content("content/js/contact.js")></script>
+

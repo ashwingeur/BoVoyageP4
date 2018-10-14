@@ -1,12 +1,42 @@
-﻿@model BoVoyageP4.Models.Info
+﻿
+@model BoVoyageP4.Models.Info
 
 @{
     ViewBag.Title = "A propos de";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/about.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/about_responsive.css")>
+</head>
 
 
-<h1>A propos de</h1>
 
-<p>Dev: @Model.NomDeveloppeur</p>
-<p>&copy; @Model.DateCreation</p>
-<p>Contact: @Model.ContactMail</p>
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+
+                <div class="section_title"><h2>A propos</h2></div>
+            </div>
+        </div>
+        <div class="row about_row">
+            <div class="col-lg-6">
+                <div class="about_content">
+
+                    <div class="about_text">
+                        <p>Dev: @Model.NomDeveloppeur</p>
+                        <p>&copy; @Model.DateCreation</p>
+                        <p>Contact: @Model.ContactMail</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about_image"><img src="images/about_1.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src=@Url.Content("content/js/about.js")></script>

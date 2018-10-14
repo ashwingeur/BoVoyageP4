@@ -64,17 +64,21 @@
             @Html.DisplayFor(model => model.DateNaissance)
         </dd>
     </dl>
+
+
+
     <div>
         @if (Model.DossierReservation != null)
         {
-                <dd>Reservation</dd>
+            <dd>Reservation</dd>
             foreach (var dossier in Model.DossierReservation)
             {
                 <div class="breadcrumb">
                     <p>@dossier.Voyage.Destination.Description</p>
                     <p class="alert-info">Etat : @dossier.EtatDossierReservation</p>
                 </div>
-                
+
             }
         }
     </div>
+</div>
