@@ -45,6 +45,7 @@ namespace BoVoyageP4.Models
         public ICollection<VoyageImage> Images { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
+
         public Voyage() { }
 
         public Voyage(DateTime dateAller, DateTime dateRetour, int placesDisponibles, decimal prixParPersonne,

@@ -3,99 +3,90 @@
 
 @{
     ViewBag.Title = "index";
-    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 
-<!-- Destinations -->
 
 <div class="destinations" id="destinations">
     <div class="container">
         <div class="row">
+
+            <!-- Tri des voyages -->
+            <div class="row destination_sorting_row">
+                <div class="col">
+                    <div class="destination_sorting d-flex flex-row align-items-start justify-content-start">
+                        <div class="sorting">
+                            <ul class="item_sorting">
+                                <li>
+                                    <span class="sorting_text">Trier par </span>
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    <ul>
+                                        <form action="@Url.Action("Tri", "Home")" id="Tri" method="get" enctype="multipart/form-data">
+                                            <ul class="nav navbar-nav">
+                                                <li>TRIER PAR   :   </li>
+                                                <li>REGION:   @Html.RadioButton("ChampsTri", "REGION")</li>
+                                                <li>DATE DE DEPART: @Html.RadioButton("ChampsTri", "DATEDEPART")</li>
+                                                <li>DATE DE RETOUR: @Html.RadioButton("ChampsTri", "DATERETOUR")</li>
+                                                <li>PRIX: @Html.RadioButton("ChampsTri", "PRIX")</li>
+                                            </ul>
+                                            <input type="submit" value="Appuyez ici pour lancer le tri" />
+                                        </form>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <!-- Titre -->
             <div class="col text-center">
 
                 <div class="section_title"><h2>Nos destinations</h2></div>
             </div>
+
         </div>
-        <div class="row destinations_row">
-            <div class="col">
-                <div class="destinations_container item_grid">
+            <!-- Destination -->
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
 
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_1.jpg" alt="">
-                            <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">Bali</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
+                        @if (Model.Voyages != null)
+                        {
+                            foreach (var item in Model.Voyages)
+                            {
+
+                                <div class="destination item" style="height:510px">
+                                    @if (item.Images?.Count() > 0)
+                                    {<div class="destination_image">
+                                            @Html.VoyageImage(item.Images.First(), "img-thumbnail")
+                                        </div>
+                                    }
+
+                                    <div class="destination_content">
+                                        <div class="destination_title">
+                                            <h3>Pays:@item.Destination.Pays</h3>
+                                            <h3>Region:@item.Destination.Region</h3>
+                                        </div>
+                                        <div class="destination_price">
+                                            <p>Prix:@item.PrixParPersonne</p>
+                                        </div>
+                                        <p>Date Aller:@item.DateAller.ToString("ddd dd MMM yyyy ")</p>
+                                        <p>Date Retour:@item.DateRetour.ToString("ddd dd MMM yyyy ")</p>
+                                        @Html.ActionLink("Reservez vite!", "Reservation/" + @item.ID, "Reservation", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
+                                        <p><a href="@Url.RouteUrl("DetailsVoyage", new { id=item.ID, pays = item.Destination.Pays })" class="btn btn-primary" role="button">Voir les détails</a>
+
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
                     </div>
-
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_2.jpg" alt="">
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
-                    </div>
-
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_3.jpg" alt="">
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
-                    </div>
-
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_4.jpg" alt="">
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">Paris</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
-                    </div>
-
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_5.jpg" alt="">
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
-                    </div>
-
-                    <!-- Destination -->
-                    <div class="destination item">
-                        <div class="destination_image">
-                            <img src="images/destination_6.jpg" alt="">
-                        </div>
-                        <div class="destination_content">
-                            <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
-                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                            <div class="destination_price">From $679</div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
+       
     </div>
 </div>

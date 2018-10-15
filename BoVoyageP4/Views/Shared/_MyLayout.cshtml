@@ -13,15 +13,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Travello template project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/bootstrap4/bootstrap.min.css")>
-    <link href=@Url.Content("content/plugins/font-awesome-4.7.0/css/font-awesome.min.css") rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/plugins/OwlCarousel2-2.2.1/owl.carousel.css")>
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css")>
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/plugins/OwlCarousel2-2.2.1/animate.css")>
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/main_styles.css")>
-    <link rel="stylesheet" type="text/css" href=@Url.Content("content/styles/responsive.css")>
 
+    <link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/styles/bootstrap4/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" />
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/Content/styles/responsive.css" rel="stylesheet" />
+    <link href="~/Content/styles/main_styles.css" rel="stylesheet" />
     <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+
 </head>
 <body>
     <div>
@@ -40,7 +41,7 @@
                                     <div class="logo"> <a>  @Html.ActionLink("BoVoyage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) </a></div>
                                     <nav class="main_nav">
                                         <ul class="d-flex flex-row align-items-start justify-content-start">
-                                            <li class="active"><a href="index.html">Home</a></li>
+                                            <li class="active"><a>@Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a></li>
                                             <li><a> @Html.ActionLink("À propos", "About", "Home")</a></li>
                                             <li><a>@Html.ActionLink("Contact", "Contact", "FormulaireContacts")</a></li>
                                             <li><a>@Html.ActionLink("Inscription", "Subscribe", "Clients")</a></li>
@@ -51,18 +52,18 @@
                                                 {
                                                     <!--
 
-                                                GTM:Url.Action("login", "AuthentificationClient") dont work
-                                                <form class="navbar-form navbar-right" method="post" action="@Url.Action("login", "AuthentificationClient")">
-                                                    <div class="form-group">
-                                                        <input type="text" name="Email" class="form-control" placeholder="Login">
-                                                        <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" />
-                                                    </div>
-                                                    <button type="submit" class="btn btn-info">OK</button>
-                                                </form>
-                                                <ul class="nav navbar-nav navbar-right">
-                                                    <li><a href="@Url.Action("subscribe", "clients")">Inscription</a></li>
-                                                </ul>
-                                                -->
+                                            GTM:Url.Action("login", "AuthentificationClient") dont work
+                                            <form class="navbar-form navbar-right" method="post" action="@Url.Action("login", "AuthentificationClient")">
+                                                <div class="form-group">
+                                                    <input type="text" name="Email" class="form-control" placeholder="Login">
+                                                    <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" />
+                                                </div>
+                                                <button type="submit" class="btn btn-info">OK</button>
+                                            </form>
+                                            <ul class="nav navbar-nav navbar-right">
+                                                <li><a href="@Url.Action("subscribe", "clients")">Inscription</a></li>
+                                            </ul>
+                                            -->
                                                     <ul class="d-flex flex-row align-items-start justify-content-start">
                                                         <li><a href="@Url.Action("Login","AuthentificationClient",new { area="" } )">Se connecter</a></li>
                                                     </ul>
@@ -94,13 +95,13 @@
 
             <div class="home">
 
-                <!-- Home Slider -->
+                <!-- Home Picture -->
                 <div class="home_slider_container">
                     <div class="owl-carousel owl-theme home_slider">
 
-                        <!-- Slide -->
+                        <!-- Picture -->
                         <div class="owl-item">
-                            <div class="background_image" style="background-image:url(content/images/home_slider.jpg)"></div>
+                            <div class="background_image" style="background-image:url(Content/images/home_slider.jpg)"></div>
                             <div class="home_slider_content_container">
                                 <div class="container">
                                     <div class="row">
@@ -115,10 +116,10 @@
                         </div>
 
                     </div>
-
-
                 </div>
             </div>
+
+
 
             <!-- Search -->
 
@@ -131,10 +132,8 @@
                                 <div class="home_search_content">
                                     <form action="@Url.Action("Recherche", "Home")" class="home_search_form" id="home_search_form">
                                         <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                            <input type="text" class="search_input search_input_1" placeholder="Region" required="required">
-                                            <input type="text" class="search_input search_input_2" placeholder="Depart">
-                                            <input type="text" class="search_input search_input_3" placeholder="arrivée">
-                                            <input type="text" class="search_input search_input_4" placeholder="Budget">
+                                            <input type="text" class="search_input search_input_1" placeholder="Recherche par Region" name="Filter" required="required">
+
                                             <button class="home_search_button">search</button>
                                         </div>
                                     </form>
@@ -147,21 +146,29 @@
 
 
 
-            <div> @RenderBody() </div>
+            <div class="container body-content">
+                @Html.Partial("_PartialDisplay")
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - BoVoyage</p>
+                </footer>
+            </div>
 
-    
+
         </div>
 
-        <script src="Content/js/jquery-3.2.1.min.js"></script>
-        <script src="Content/styles/bootstrap4/popper.js"></script>
-        <script src="Content/styles/bootstrap4/bootstrap.min.js"></script>
-        <script src="Content/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-        <script src="Content/plugins/Isotope/isotope.pkgd.min.js"></script>
-        <script src="Content/plugins/scrollTo/jquery.scrollTo.min.js"></script>
-        <script src="Content/plugins/easing/easing.js"></script>
-        <script src="Content/plugins/parallax-js-master/parallax.min.js"></script>
-        <script src="Content/js/custom.js"></script>
+        <script src="~/Content/js/jquery-3.2.1.min.js"></script>
+        <script src="~/Content/styles/bootstrap4/popper.js"></script>
+        <script src="~/Content/styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="~/Content/plugins/Isotope/isotope.pkgd.min.js"></script>
+        <script src="~/Content/plugins/scrollTo/jquery.scrollTo.min.js"></script>
+        <script src="~/Content/plugins/easing/easing.js"></script>
+        <script src="~/Content/plugins/parallax-js-master/parallax.min.js"></script>
      
+     
+    
 
     </div>
 </body>
